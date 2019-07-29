@@ -1,5 +1,6 @@
 package jettydemo;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
 
@@ -17,6 +18,7 @@ public class EventSocket extends WebSocketAdapter
     {
         super.onWebSocketText(message);
         System.out.println("Received TEXT message: " + message);
+        ObjectMapper objectMapper = new ObjectMapper();
     }
 
     @Override
