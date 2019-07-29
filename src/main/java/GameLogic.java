@@ -5,7 +5,11 @@ import java.util.Random;
     ShenandoahStubbs
  */
 public class GameLogic {
-    Card[] deck = new Card[52];
+    Card[] deck = new Card[51];
+    Card[] playDeck = new Card[7];
+    Card[] playerOne = new Card[21];
+    Card[] playerTwo = new Card[21];
+
     //creteDeck creates the deck of 52 playing cards used for the game
     public void createDeck (Card[] deck)
     {
@@ -50,7 +54,16 @@ public class GameLogic {
     {
         createDeck(deck);
         shuffle(deck);
-    //TODO need to deal 8 cards to the table and 22 cards to each player. Create an array for each. 
+    //TODO need to deal 8 cards to the table and 22 cards to each player. Create an array for each.
+        for(int i = 0; i < 7; i ++)
+        {
+            for(int j = 0; j < 23; j++)
+            {
+                playDeck[i] = deck[i];
+                playerOne[j] = deck[j + 1];
+                playerTwo[j] = deck[j + 2];
+            }
+        }
 
     }
     /*
