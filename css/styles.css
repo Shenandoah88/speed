@@ -1,3 +1,491 @@
 body {
     background-color: green;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+td{
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.dropzone2C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/2C.png");
+}
+
+.dropzone2D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/2D.png");
+}
+
+.dropzone2H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/2H.png");
+}
+
+.dropzone2S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/2S.png");
+}
+
+.dropzone3C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/3C.png");
+}
+
+.dropzone3D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/3D.png");
+}
+
+.dropzone3H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/3H.png");
+}
+
+.dropzone3S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/3S.png");
+}
+
+.dropzone4C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/4C.png");
+}
+
+.dropzone4D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/4D.png");
+}
+
+.dropzone4H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/4H.png");
+}
+
+.dropzone4S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/4S.png");
+}
+
+.dropzone5C {
+     align-content: center;
+     height: 170px;
+     width: 98px;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-image: url("PNG/5C.png");
+ }
+
+.dropzone5D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/5D.png");
+}
+
+.dropzone5H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/5H.png");
+}
+
+.dropzone5S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/5S.png");
+}
+
+.dropzone6C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/6C.png");
+}
+
+.dropzone6D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/6D.png");
+}
+
+.dropzone6H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/6H.png");
+}
+
+.dropzone6S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/6S.png");
+}
+
+.dropzone7C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/7C.png");
+}
+
+.dropzone7D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/7D.png");
+}
+
+.dropzone7H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/7H.png");
+}
+
+.dropzone7S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/7S.png");
+}
+
+.dropzone8C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/8C.png");
+}
+
+.dropzone8D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/8D.png");
+}
+
+.dropzone8H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/8H.png");
+}
+
+.dropzone8S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/8S.png");
+}
+
+.dropzone9C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/9C.png");
+}
+
+.dropzone9D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/9D.png");
+}
+
+.dropzone9H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/9H.png");
+}
+
+.dropzone9S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/9S.png");
+}
+
+.dropzone10C {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/10C.png");
+}
+
+.dropzone10D {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/10D.png");
+}
+
+.dropzone10H {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/10H.png");
+}
+
+.dropzone10S {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/10S.png");
+}
+
+.dropzoneJC {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/JC.png");
+}
+
+.dropzoneJD {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/JD.png");
+}
+
+.dropzoneJH {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/JH.png");
+}
+
+.dropzoneJS {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/JS.png");
+}
+
+.dropzoneQC {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/QC.png");
+}
+
+.dropzoneQD {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/QD.png");
+}
+
+.dropzoneQH {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/QH.png");
+}
+
+.dropzoneQS {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/QS.png");
+}
+
+.dropzoneKC {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/KC.png");
+}
+
+.dropzoneKD {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/KD.png");
+}
+
+.dropzoneKH {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/KH.png");
+}
+
+.dropzoneKS {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/KS.png");
+}
+
+.dropzoneAC {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/AC.png");
+}
+
+.dropzoneAD {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/AD.png");
+}
+
+.dropzoneAH {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/AH.png");
+}
+
+.dropzoneAF {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/AS.png");
+}
+
+
+
+
+img {
+    padding: 5px;
+}
