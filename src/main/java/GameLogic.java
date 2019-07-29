@@ -50,8 +50,8 @@ public class GameLogic {
     {
         createDeck(deck);
         shuffle(deck);
+    //TODO need to deal 8 cards to the table and 22 cards to each player. Create an array for each. 
 
-        
     }
     /*
         checkMove checks to see if the players move is valid
@@ -60,7 +60,7 @@ public class GameLogic {
      */
     public boolean checkMove()
     {
-        //TODO
+        //TODO need to check to see which cards are active on the table and if the move is allowed
         return true;
     }
 
