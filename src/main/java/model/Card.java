@@ -5,19 +5,19 @@ public class Card {
     public enum VALUES {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
     public enum SUITS {CLUBS, DIAMONDS, HEARTS, SPADES}
 
-    private int value;
-    public int getValue() {
+    private VALUES value;
+    public VALUES getValue() {
         return value;
     }
-    public void setValue(int value) {
+    public void setValue(VALUES value) {
         this.value = value;
     }
 
-    private int suit;
-    public int getSuit() {
+    private SUITS suit;
+    public SUITS getSuit() {
         return suit;
     }
-    public void setSuit(int suit) {
+    public void setSuit(SUITS suit) {
         this.suit = suit;
     }
 }

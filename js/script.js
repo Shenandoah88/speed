@@ -1,7 +1,18 @@
 var webSocket = new WebSocket("ws://localhost:8080/events");
 webSocket.onopen = function () {
 
-    webSocket.send("howdy");
+    var playerAction = {};
+    playerAction.player = "player1";
+    playerAction.stack = 3;
+    var playerActionJSON = JSON.stringify(playerAction);
+    webSocket.send(playerActionJSON);
+
+};
+
+webSocket.onmessage = function (message) {
+    console.log(message);
+    console.log(JSON.parse(message.data));
+
 };
 
 var dragged;
