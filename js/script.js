@@ -26,7 +26,7 @@ document.addEventListener("dragstart", function(event) {
 // store a ref. on the dragged elem
     dragged = event.target;
 // make it half transparent
-    event.target.style.opacity = .25;
+    event.target.style.opacity = .9;
 }, false);
 
 document.addEventListener("dragend", function(event) {
@@ -43,7 +43,7 @@ document.addEventListener("dragover", function(event) {
 document.addEventListener("dragenter", function(event) {
 // highlight potential drop target when the draggable element enters it
     if (event.target.className == "dropzone") {
-        event.target.style.background = "limegreen";
+
     }
 
 }, false);
@@ -51,7 +51,7 @@ document.addEventListener("dragenter", function(event) {
 document.addEventListener("dragleave", function(event) {
 // reset background of potential drop target when the draggable element leaves it
     if (event.target.className == "dropzone") {
-        event.target.style.background = "darkgreen";
+
     }
 
 }, false);
@@ -65,6 +65,6 @@ document.addEventListener("drop", function(event) {
 // move dragged elem to the selected drop target
     if (patt.test(event.target.className)) {
         event.target.style.background = "";
-        event.target.className = 'dropzone10H'
+        event.target.className = 'dropzone10H';
     }
 }, false);
