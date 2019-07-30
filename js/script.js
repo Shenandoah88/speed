@@ -54,6 +54,6 @@ document.addEventListener("drop", function(event) {
 // move dragged elem to the selected drop target
     if (patt.test(event.target.className)) {
         event.target.style.background = "";
-        event.target.className = 'dropzone10H'
+        event.target.className = 'dropzone10H';
     }
 }, false);
