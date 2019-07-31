@@ -16,7 +16,14 @@ public class Card {
         this.s = s;
     }
 
+    public Suit getS()
+    {
+        return s;
+    }
 
-
+    public Rank getR()
+    {
+        return r;
+    }
 
 }

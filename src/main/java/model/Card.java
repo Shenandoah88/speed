@@ -3,14 +3,14 @@ package model;
 public class Card {
 
     public enum RANK {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
-    public enum SUIT {CLUBS, DIAMONDS, HEARTS, SPADES}
+    public enum SUIT {CLUBS, DIAMONDS, HEARTS, SPADES};
 
-    private RANK value;
-    public RANK getValue() {
-        return value;
+    private RANK rank;
+    public RANK getRank() {
+        return rank;
     }
-    public void setValue(RANK value) {
-        this.value = value;
+    public void setRank(RANK rank) {
+        this.rank = rank;
     }
 
     private SUIT suit;
@@ -25,7 +25,7 @@ public class Card {
     public String getStyleString() {
         if (styleString == null) {
             StringBuilder styleStringBuilder = new StringBuilder();
-            int ordinal = getValue().ordinal() + 1;
+            int ordinal = getRank().ordinal() + 1;
             switch (ordinal) {
                 case 1:
                     styleStringBuilder.append("A");
