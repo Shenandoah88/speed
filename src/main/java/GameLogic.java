@@ -52,8 +52,6 @@ public class GameLogic {
         createDeck();
         Collections.shuffle(deck);
 
-        deck.toArray(deals);
-
         // creates 8 playing cards
         for (int i = 0; i < 8; i++) {
             playDeck.add(deck.get(i));
