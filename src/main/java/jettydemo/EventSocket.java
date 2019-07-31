@@ -46,12 +46,11 @@ public class EventSocket extends WebSocketAdapter
                 GameBoardSpace gameBoardSpace = new GameBoardSpace();
                 gameBoardSpace.setActive(true);
                 Card card = new Card();
-                card.setSuit(Card.SUITS.SPADES);
-                card.setValue(Card.VALUES.ACE);
+                card.setSuit(Card.SUIT.SPADES);
+                card.setValue(Card.RANK.ACE);
                 gameBoardSpace.setCard(card);
                 gameBoardSpaces.add(gameBoardSpace);
             }
-            gameBoardSpaces.add(new GameBoardSpace());
             gameServerResponse.setGameBoard(gameBoardSpaces);
 
             try {

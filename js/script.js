@@ -13,6 +13,7 @@ webSocket.onmessage = function (message) {
     console.log(message);
     console.log(JSON.parse(message.data));
 
+    var response = JSON.parse(message.data);
 };
 
 var dragged;
