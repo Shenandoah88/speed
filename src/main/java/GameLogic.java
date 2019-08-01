@@ -25,7 +25,8 @@ public class GameLogic {
     static List<Card> table5 = new ArrayList<Card>();
     static List<Card> table6 = new ArrayList<Card>();
     static List<Card> table7 = new ArrayList<Card>();
-    static Card[] deals = new Card[51];
+    static List<Card> cardPlacement = new ArrayList<Card>();
+
 
 
     /*
@@ -128,6 +129,32 @@ public class GameLogic {
         return valid;
     }
 
+    /**
+     * playerMove takes the player's card from their hand and places
+     * it on the appropriate stack. In order to do this playerMove
+     * gets the id for the player making the move and the id of the stack attempting
+     * to be played on.
+     */
+
+    public void playerMove ()
+    {
+        int activePlayer = 0;//TODO what variable are we using for this
+         //TODO how to get the array for the stack that the player is trying to play on
+        //use cardPlacement ArrayList 
+        Card playCard;
+
+        if(activePlayer == 1)
+        {
+
+            playCard = playerOne.remove(0);
+            cardPlacement.add(playCard);
+        }
+        if(activePlayer == 2)
+        {
+            playCard = playerTwo.remove(0);
+            cardPlacement.add(playCard);
+        }
+    }
     /**
      * This method picks up the 4 piles in front of each player
      * and add them to their hand. This allows the game to continue
