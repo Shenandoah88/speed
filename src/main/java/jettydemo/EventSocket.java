@@ -18,6 +18,7 @@ public class EventSocket extends WebSocketAdapter
     {
         super.onWebSocketConnect(sess);
         System.out.println("Socket Connected: " + sess);
+
     }
 
     @Override
