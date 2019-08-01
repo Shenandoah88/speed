@@ -138,6 +138,7 @@ public class GameLogic {
 
     public static GameServerResponse playerMove(PlayerAction playerAction) {
 
+            String end;
             Card playCard;
             int playStack = playerAction.getStack();
 
@@ -160,7 +161,10 @@ public class GameLogic {
                 } else if (playStack == 7) {
                     table7.add(playCard);
                 }
-                //if(playerOne.size() < 1)
+                if(playerOne.size() < 1)
+                {
+                    end = "END";
+                }
 
             }
             if (playerAction.getPlayer().equals("player2")) {
@@ -182,7 +186,10 @@ public class GameLogic {
                 } else if (playStack == 7) {
                     table7.add(playCard);
                 }
-               // if(playerTwo.size() < 1)
+               /if(playerTwo.size() < 1)
+                {
+                    end = "END";
+                }
             }
             if(checkMove() == false)
         {
@@ -225,6 +232,7 @@ public class GameLogic {
         gameBoardSpaces.add(gameBoardSpace7);
 
         gameServerResponse.setGameBoard(gameBoardSpaces);
+        gameServerResponse.setMessage(end);
 
         return gameServerResponse;
     }
