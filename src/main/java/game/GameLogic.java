@@ -135,48 +135,56 @@ public class GameLogic {
      */
 
     public static void playerMove(PlayerAction playerAction) {
-        Card playCard;
-        int playStack = playerAction.getStack();
 
-        if (playerAction.getPlayer().equals("player1")) {
-            playCard = playerOne.remove(0);
-            if (playStack == 0) {
-                table0.add(playCard);
-            } else if (playStack == 1) {
-                table1.add(playCard);
-            } else if (playStack == 2) {
-                table2.add(playCard);
-            } else if (playStack == 3) {
-                table3.add(playCard);
-            } else if (playStack == 4) {
-                table4.add(playCard);
-            } else if (playStack == 5) {
-                table5.add(playCard);
-            } else if (playStack == 6) {
-                table6.add(playCard);
-            } else if (playStack == 7) {
-                table7.add(playCard);
+            Card playCard;
+            int playStack = playerAction.getStack();
+
+            if (playerAction.getPlayer().equals("player1")) {
+                playCard = playerOne.remove(0);
+                if (playStack == 0) {
+                    table0.add(playCard);
+                } else if (playStack == 1) {
+                    table1.add(playCard);
+                } else if (playStack == 2) {
+                    table2.add(playCard);
+                } else if (playStack == 3) {
+                    table3.add(playCard);
+                } else if (playStack == 4) {
+                    table4.add(playCard);
+                } else if (playStack == 5) {
+                    table5.add(playCard);
+                } else if (playStack == 6) {
+                    table6.add(playCard);
+                } else if (playStack == 7) {
+                    table7.add(playCard);
+                }
+                //if(playerOne.size() < 1)
+
             }
-        }
-        if (playerAction.getPlayer().equals("player2")) {
-            playCard = playerTwo.remove(0);
-            if (playStack == 0) {
-                table0.add(playCard);
-            } else if (playStack == 1) {
-                table1.add(playCard);
-            } else if (playStack == 2) {
-                table2.add(playCard);
-            } else if (playStack == 3) {
-                table3.add(playCard);
-            } else if (playStack == 4) {
-                table4.add(playCard);
-            } else if (playStack == 5) {
-                table5.add(playCard);
-            } else if (playStack == 6) {
-                table6.add(playCard);
-            } else if (playStack == 7) {
-                table7.add(playCard);
+            if (playerAction.getPlayer().equals("player2")) {
+                playCard = playerTwo.remove(0);
+                if (playStack == 0) {
+                    table0.add(playCard);
+                } else if (playStack == 1) {
+                    table1.add(playCard);
+                } else if (playStack == 2) {
+                    table2.add(playCard);
+                } else if (playStack == 3) {
+                    table3.add(playCard);
+                } else if (playStack == 4) {
+                    table4.add(playCard);
+                } else if (playStack == 5) {
+                    table5.add(playCard);
+                } else if (playStack == 6) {
+                    table6.add(playCard);
+                } else if (playStack == 7) {
+                    table7.add(playCard);
+                }
+               // if(playerTwo.size() < 1)
             }
+            if(checkMove() == false)
+        {
+            restartGame();
         }
     }
     /**
