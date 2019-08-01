@@ -1,5 +1,7 @@
 package model;
 
+import game.Card;
+
 public class GameBoardSpace {
 
     private boolean isActive;

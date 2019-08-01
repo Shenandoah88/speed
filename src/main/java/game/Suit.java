@@ -1,5 +1,5 @@
 package game;/*
-    game.Suit is an enum used in conjunction with game.Rank and game.Card
+    game.Suit is an enum used in conjunction with game.Rank and game.Card2
     to create the playing deck for the game California Speed
     ShenandoahStubbs
  */

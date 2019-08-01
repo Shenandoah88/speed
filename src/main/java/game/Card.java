@@ -8,22 +8,53 @@ package game;/*
 
 public class Card {
 
-    Suit s;
-    Rank r;
+    Suit suit;
+    Rank rank;
 
-    public Card(Rank r, Suit s) {
-        this.r = r;
-        this.s = s;
+    public Card(Rank rank, Suit suit) {
+        this.rank = rank;
+        this.suit = suit;
     }
 
-    public Suit getS()
+    public Suit getSuit()
     {
-        return s;
+        return suit;
     }
 
-    public Rank getR()
+    public Rank getRank()
     {
-        return r;
+        return rank;
     }
 
+    private String styleString;
+    public String getStyleString() {
+        if (styleString == null) {
+            StringBuilder styleStringBuilder = new StringBuilder();
+            int ordinal = getRank().ordinal() + 1;
+            switch (ordinal) {
+                case 1:
+                    styleStringBuilder.append("A");
+                    break;
+                case 11:
+                    styleStringBuilder.append("J");
+                    break;
+                case 12:
+                    styleStringBuilder.append("Q");
+                    break;
+                case 13:
+                    styleStringBuilder.append("K");
+                    break;
+                default:
+                    styleStringBuilder.append(ordinal);
+            }
+            styleStringBuilder.append(getSuit().name().charAt(0));
+
+            styleString = styleStringBuilder.toString();
+        }
+
+        return styleString;
+    }
+    public void setStyleString(String styleString) {
+        this.styleString = styleString;
+    }
 }

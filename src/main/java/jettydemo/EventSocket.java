@@ -2,15 +2,10 @@ package jettydemo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import game.GameLogic;
-import model.Card;
-import model.GameBoardSpace;
 import model.GameServerResponse;
 import model.PlayerAction;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EventSocket extends WebSocketAdapter
 {
@@ -50,10 +45,10 @@ public class EventSocket extends WebSocketAdapter
 //            for (int i = 0; i < 8; i++) {
 //                GameBoardSpace gameBoardSpace = new GameBoardSpace();
 //                gameBoardSpace.setActive(true);
-//                Card card = new Card();
-//                card.setSuit(Card.SUIT.SPADES);
-//                card.setRank(Card.RANK.ACE);
-//                gameBoardSpace.setCard(card);
+//                Card2 card = new Card2();
+//                card.setSuit(Card2.SUIT.SPADES);
+//                card.setRank(Card2.RANK.ACE);
+//                gameBoardSpace.setCard2(card);
 //                gameBoardSpaces.add(gameBoardSpace);
 //            }
 //            gameServerResponse.setGameBoard(gameBoardSpaces);

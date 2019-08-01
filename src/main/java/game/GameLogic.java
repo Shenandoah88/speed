@@ -1,5 +1,7 @@
 package game;
 
+import model.GameBoardSpace;
+import model.GameServerResponse;
 import model.PlayerAction;
 
 import java.util.ArrayList;
@@ -93,9 +95,9 @@ public class GameLogic {
         boolean isValid = false;
 
         for (Card match : playDeck) {
-            Rank check = match.getR();
+            Rank check = match.getRank();
             for (Card checkMatch : playDeck) {
-                Rank matchCheck = checkMatch.getR();
+                Rank matchCheck = checkMatch.getRank();
                 if (matchCheck == check) {
                     return true;
                 }
@@ -128,13 +130,13 @@ public class GameLogic {
     }
 
     /**
-     * playerMove takes the player's card from their hand and places
+     * playerMove takes the player'suit card from their hand and places
      * it on the appropriate stack. In order to do this playerMove
      * gets the id for the player making the move and the id of the stack attempting
      * to be played on.
      */
 
-    public static void playerMove(PlayerAction playerAction) {
+    public static GameServerResponse playerMove(PlayerAction playerAction) {
 
             Card playCard;
             int playStack = playerAction.getStack();
@@ -186,6 +188,45 @@ public class GameLogic {
         {
             restartGame();
         }
+
+        GameServerResponse gameServerResponse = new GameServerResponse();
+        List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
+
+        GameBoardSpace gameBoardSpace0 = new GameBoardSpace();
+        gameBoardSpace0.setCard(table0.get(table0.size()-1));
+        gameBoardSpaces.add(gameBoardSpace0);
+
+        GameBoardSpace gameBoardSpace1 = new GameBoardSpace();
+        gameBoardSpace1.setCard(table1.get(table1.size()-1));
+        gameBoardSpaces.add(gameBoardSpace1);
+
+        GameBoardSpace gameBoardSpace2 = new GameBoardSpace();
+        gameBoardSpace2.setCard(table2.get(table2.size()-1));
+        gameBoardSpaces.add(gameBoardSpace2);
+
+        GameBoardSpace gameBoardSpace3 = new GameBoardSpace();
+        gameBoardSpace3.setCard(table3.get(table3.size()-1));
+        gameBoardSpaces.add(gameBoardSpace3);
+
+        GameBoardSpace gameBoardSpace4 = new GameBoardSpace();
+        gameBoardSpace4.setCard(table4.get(table4.size()-1));
+        gameBoardSpaces.add(gameBoardSpace4);
+
+        GameBoardSpace gameBoardSpace5 = new GameBoardSpace();
+        gameBoardSpace5.setCard(table5.get(table5.size()-1));
+        gameBoardSpaces.add(gameBoardSpace5);
+
+        GameBoardSpace gameBoardSpace6 = new GameBoardSpace();
+        gameBoardSpace6.setCard(table6.get(table6.size()-1));
+        gameBoardSpaces.add(gameBoardSpace6);
+
+        GameBoardSpace gameBoardSpace7 = new GameBoardSpace();
+        gameBoardSpace7.setCard(table7.get(table7.size()-1));
+        gameBoardSpaces.add(gameBoardSpace7);
+
+        gameServerResponse.setGameBoard(gameBoardSpaces);
+
+        return gameServerResponse;
     }
     /**
      * This method picks up the 4 piles in front of each player
