@@ -1,8 +1,8 @@
-/*
+package game;/*
     Class card sets up the constructor for how a card
     is created. Each card has a rank a suit.
     This class will be used to in conjunction with
-    Suit and Rank to create a deck in the GameLogic class
+    game.Suit and game.Rank to create a deck in the game.GameLogic class
     ShenandoahStubbs
  */
 

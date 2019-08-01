@@ -1,5 +1,5 @@
-/*
-    Suit is an enum used in conjunction with Rank and Card
+package game;/*
+    game.Suit is an enum used in conjunction with game.Rank and game.Card
     to create the playing deck for the game California Speed
     ShenandoahStubbs
  */

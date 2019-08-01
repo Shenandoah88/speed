@@ -1,3 +1,4 @@
+package game;
 
 import model.PlayerAction;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 
 /**
- * GameLogic contains all the logic used to play the game California Speed
+ * game.GameLogic contains all the logic used to play the game California Speed
  * @author shenandoahstubbs
  *
  */

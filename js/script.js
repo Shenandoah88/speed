@@ -5,7 +5,7 @@ webSocket.onopen = function () {
     playerAction.player = "player1";
     playerAction.stack = 3;
     var playerActionJSON = JSON.stringify(playerAction);
-    webSocket.send(playerActionJSON);
+    // webSocket.send(playerActionJSON);
 
 };
 

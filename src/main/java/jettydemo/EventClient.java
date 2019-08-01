@@ -25,7 +25,7 @@ public class EventClient
                 // Wait for Connect
                 Session session = fut.get();
                 // Send a message
-                session.getRemote().sendString("Hello");
+                session.getRemote().sendString("game.Hello");
                 // Close session
                 session.close();
             }

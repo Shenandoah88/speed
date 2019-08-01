@@ -1,3 +1,5 @@
+package game;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.json.JSONObject;

@@ -1,5 +1,5 @@
-/*
-    Rank is an enum used in conjunction with Suit to create cards
+package game;/*
+    game.Rank is an enum used in conjunction with game.Suit to create cards
     that are then used to create the deck used to play the game
     California Speed
     ShenandoahStubbs

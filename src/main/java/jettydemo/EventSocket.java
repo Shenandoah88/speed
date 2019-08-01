@@ -1,6 +1,7 @@
 package jettydemo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import game.GameLogic;
 import model.Card;
 import model.GameBoardSpace;
 import model.GameServerResponse;
@@ -18,6 +19,10 @@ public class EventSocket extends WebSocketAdapter
     {
         super.onWebSocketConnect(sess);
         System.out.println("Socket Connected: " + sess);
+        GameLogic.dealGame();
+        while (!GameLogic.checkTable()) {
+            System.out.println("game dead, redealing");
+        }
     }
 
     @Override
@@ -32,12 +37,13 @@ public class EventSocket extends WebSocketAdapter
 
         try {
             playerAction = objectMapper.readValue(message, PlayerAction.class);
+            GameLogic.
         } catch (Exception ex) {
             System.out.println("failed to map string to PlayerAction");
         }
 
         if (playerAction != null) {
-            //TODO replace this sample object with a real one built by GameLogic.java
+            //TODO replace this sample object with a real one built by game.GameLogic.java
             gameServerResponse = new GameServerResponse();
             gameServerResponse.setPlayer("player1");
             gameServerResponse.setHandSize(9);
