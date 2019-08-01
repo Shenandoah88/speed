@@ -1,11 +1,13 @@
 var webSocket = new WebSocket("ws://localhost:8080/events");
 webSocket.onopen = function () {
 
+    /*
     var playerAction = {};
     playerAction.player = "player1";
     playerAction.stack = 3;
     var playerActionJSON = JSON.stringify(playerAction);
-    // webSocket.send(playerActionJSON);
+    webSocket.send(playerActionJSON);
+     */
 
 };
 
@@ -13,7 +15,19 @@ webSocket.onmessage = function (message) {
     console.log(message);
     console.log(JSON.parse(message.data));
 
-    var response = JSON.parse(message.data);
+    var poop = JSON.parse(message.data);
+    console.log(poop);
+    console.log(poop.gameBoard);
+    console.log(poop.gameBoard[0]);
+    console.log(poop.gameBoard[0].card);
+    console.log(poop.gameBoard[0].card.styleString);
+
+    for(var corn = 0; corn < 8; corn++) {
+       var peanut = poop.gameBoard[corn].card.styleString;
+       console.log(corn);
+       console.log(peanut);
+       document.getElementById(corn).className = "dropzone" + peanut;
+    }
 };
 
 var dragged;
@@ -24,12 +38,13 @@ document.addEventListener("touchstart", function(event){
     // store a ref. on the dragged elem
     dragged = event.target;
 // make it half transparent
+    console.log(dragged.className);
     event.target.style.opacity = .9;
 });
 
 document.addEventListener("touchmove", function(event){
     // store a ref. on the dragged elem
-    dragged = event.target;
+
 // make it half transparent
     event.target.style.opacity = .9;
 });
@@ -39,8 +54,24 @@ document.addEventListener("touchend", function(event) {
     event.preventDefault();
 // move dragged elem to the selected drop target
     if (patt.test(event.target.className)) {
-        event.target.style.background = "";
-        event.target.className = 'dropzone10H';
+
+        if(dragged.className == "player1"){
+            var playerAction = {};
+            playerAction.player = "player1";
+            playerAction.stack = event.target.id;
+            var playerActionJSON = JSON.stringify(playerAction);
+            webSocket.send(playerActionJSON);
+        }
+        else  if(dragged.className == "player2"){
+            var playerAction = {};
+            playerAction.player = "player2";
+            playerAction.stack = event.target.id;
+            var playerActionJSON = JSON.stringify(playerAction);
+            webSocket.send(playerActionJSON);
+        }
+        else{
+            console.log('Failed to drag');
+        }
     }
 }, false);
 
@@ -73,14 +104,14 @@ document.addEventListener("drop", function(event) {
 // move dragged elem to the selected drop target
     if (patt.test(event.target.className)) {
 
-        if(dragged.className == 'player1'){
+        if(dragged.className == "player1"){
             var playerAction = {};
             playerAction.player = "player1";
             playerAction.stack = event.target.id;
             var playerActionJSON = JSON.stringify(playerAction);
             webSocket.send(playerActionJSON);
         }
-       else  if(dragged.className == 'player2'){
+       else  if(dragged.className == "player2"){
             var playerAction = {};
             playerAction.player = "player2";
             playerAction.stack = event.target.id;

@@ -30,6 +30,7 @@ public class GameLogic {
     static List<Card> table7 = new ArrayList<Card>();
 
 
+
     /*
      * Creates the 52 card deck for playing
      */
@@ -80,11 +81,13 @@ public class GameLogic {
 
     }
 
+
     /**
      * checkTable checks to see if there are any matching cards on the table, if
      * there are it returns true and the game can begin. As soon as it is no longer
      * true the game is paused and restartGame is called.
      */
+
 
     public static boolean checkTable() {
         boolean isValid = false;
@@ -131,7 +134,7 @@ public class GameLogic {
      * to be played on.
      */
 
-    public void playerMove(PlayerAction playerAction) {
+    public static void playerMove(PlayerAction playerAction) {
         Card playCard;
         int playStack = playerAction.getStack();
 
