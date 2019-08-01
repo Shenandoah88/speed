@@ -1,4 +1,6 @@
 
+import model.PlayerAction;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +27,6 @@ public class GameLogic {
     static List<Card> table5 = new ArrayList<Card>();
     static List<Card> table6 = new ArrayList<Card>();
     static List<Card> table7 = new ArrayList<Card>();
-    static List<Card> cardPlacement = new ArrayList<Card>();
 
 
 
@@ -47,7 +48,6 @@ public class GameLogic {
      * table for playing Deals 22 cards to each player for playing
      * adds each card from the table array into an array of itself. These will be used
      * for the discarding and to check matching
-     *
      */
     public static void dealGame() {
         createDeck();
@@ -62,8 +62,7 @@ public class GameLogic {
             playerOne.add(deck.get(j));
         }
         //creates playing hand for player 2
-        for(int k = 30; k < 52; k ++)
-        {
+        for (int k = 30; k < 52; k++) {
             playerTwo.add(deck.get(k));
         }
 
@@ -79,14 +78,15 @@ public class GameLogic {
         table7.add(playDeck.get(7));
 
 
-
     }
+
 
     /**
      * checkTable checks to see if there are any matching cards on the table, if
      * there are it returns true and the game can begin. As soon as it is no longer
      * true the game is paused and restartGame is called.
      */
+
 
     public static boolean checkTable() {
         boolean isValid = false;
@@ -115,13 +115,10 @@ public class GameLogic {
     public static boolean checkMove() {
         boolean valid = checkTable();
 
-        if (checkTable() == true)
-        {
+        if (checkTable() == true) {
             valid = true;
 
-        }
-        else
-        {
+        } else {
             valid = false;
             restartGame();
         }
@@ -136,23 +133,49 @@ public class GameLogic {
      * to be played on.
      */
 
-    public void playerMove ()
-    {
-        int activePlayer = 0;//TODO what variable are we using for this
-         //TODO how to get the array for the stack that the player is trying to play on
-        //use cardPlacement ArrayList 
+    public static void playerMove(PlayerAction playerAction) {
         Card playCard;
+        int playStack = playerAction.getStack();
 
-        if(activePlayer == 1)
-        {
-
+        if (playerAction.getPlayer().equals("player1")) {
             playCard = playerOne.remove(0);
-            cardPlacement.add(playCard);
+            if (playStack == 0) {
+                table0.add(playCard);
+            } else if (playStack == 1) {
+                table1.add(playCard);
+            } else if (playStack == 2) {
+                table2.add(playCard);
+            } else if (playStack == 3) {
+                table3.add(playCard);
+            } else if (playStack == 4) {
+                table4.add(playCard);
+            } else if (playStack == 5) {
+                table5.add(playCard);
+            } else if (playStack == 6) {
+                table6.add(playCard);
+            } else if (playStack == 7) {
+                table7.add(playCard);
+            }
         }
-        if(activePlayer == 2)
-        {
+        if (playerAction.getPlayer().equals("player2")) {
             playCard = playerTwo.remove(0);
-            cardPlacement.add(playCard);
+            if (playStack == 0) {
+                table0.add(playCard);
+            } else if (playStack == 1) {
+                table1.add(playCard);
+            } else if (playStack == 2) {
+                table2.add(playCard);
+            } else if (playStack == 3) {
+                table3.add(playCard);
+            } else if (playStack == 4) {
+                table4.add(playCard);
+            } else if (playStack == 5) {
+                table5.add(playCard);
+            } else if (playStack == 6) {
+                table6.add(playCard);
+            } else if (playStack == 7) {
+                table7.add(playCard);
+            }
         }
     }
     /**
