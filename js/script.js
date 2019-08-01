@@ -13,6 +13,7 @@ webSocket.onmessage = function (message) {
     console.log(message);
     console.log(JSON.parse(message.data));
 
+    var response = JSON.parse(message.data);
 };
 
 var dragged;
@@ -71,7 +72,23 @@ document.addEventListener("drop", function(event) {
     event.preventDefault();
 // move dragged elem to the selected drop target
     if (patt.test(event.target.className)) {
-        event.target.style.background = "";
-        event.target.className = 'dropzone10H';
+
+        if(dragged.className == 'player1'){
+            var playerAction = {};
+            playerAction.player = "player1";
+            playerAction.stack = event.target.id;
+            var playerActionJSON = JSON.stringify(playerAction);
+            webSocket.send(playerActionJSON);
+        }
+       else  if(dragged.className == 'player2'){
+            var playerAction = {};
+            playerAction.player = "player2";
+            playerAction.stack = event.target.id;
+            var playerActionJSON = JSON.stringify(playerAction);
+            webSocket.send(playerActionJSON);
+        }
+       else{
+           console.log('Failed to drag');
+        }
     }
 }, false);
