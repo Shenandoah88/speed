@@ -102,7 +102,8 @@ public class GameLogic {
 
         for(Card c :playDeck)
         {
-            if(checkArray.contains(c.getRank()))
+            Rank rankCheck = c.getRank();
+            if(checkArray.contains(rankCheck))
             {
                 return true;
             }
