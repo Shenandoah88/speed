@@ -163,7 +163,7 @@ public class GameLogic {
                 }
                 if(playerOne.size() < 1)
                 {
-                    end = "END";
+                    end = "END1";
                 }
 
             }
@@ -188,7 +188,7 @@ public class GameLogic {
                 }
                /if(playerTwo.size() < 1)
                 {
-                    end = "END";
+                    end = "END2";
                 }
             }
             if(checkMove() == false)
