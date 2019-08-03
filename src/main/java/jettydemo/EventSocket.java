@@ -4,15 +4,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import game.GameLogic;
 import model.GameServerResponse;
 import model.PlayerAction;
+import org.eclipse.jetty.websocket.api.RemoteEndpoint;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
 
+import java.rmi.Remote;
+import java.util.LinkedList;
+import java.util.List;
+
 public class EventSocket extends WebSocketAdapter
 {
+    static List<RemoteEndpoint> remotes;
+
     @Override
     public void onWebSocketConnect(Session sess)
     {
         super.onWebSocketConnect(sess);
+        if (remotes == null) {
+            remotes = new LinkedList<>();
+        }
+        remotes.add(getRemote());
         System.out.println("Socket Connected: " + sess);
         GameLogic.dealGame();
         while (!GameLogic.checkTable()) {
@@ -62,7 +73,9 @@ public class EventSocket extends WebSocketAdapter
 
         if (response != null) {
             try {
-                getRemote().sendString(response);
+                for (RemoteEndpoint remoteEndpoint : remotes) {
+                    remoteEndpoint.sendString(response);
+                }
             } catch (Exception ex) {
                 System.out.println("failed to send string to remote");
             }
@@ -74,6 +87,9 @@ public class EventSocket extends WebSocketAdapter
     public void onWebSocketClose(int statusCode, String reason)
     {
         super.onWebSocketClose(statusCode,reason);
+        if (remotes != null) {
+            remotes.remove(getRemote());
+        }
         System.out.println("Socket Closed: [" + statusCode + "] " + reason);
     }
 
