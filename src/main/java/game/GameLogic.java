@@ -94,13 +94,18 @@ public class GameLogic {
     public static boolean checkTable() {
         boolean isValid = false;
 
-        for (Card match : playDeck) {
-            Rank check = match.getRank();
-            for (Card checkMatch : playDeck) {
-                Rank matchCheck = checkMatch.getRank();
-                if (matchCheck == check) {
-                    return true;
-                }
+        List<Rank> checkArray = new ArrayList<Rank>();
+        for(int i = 0; i < 8; i++)
+        {
+            checkArray.add(playDeck.get(i).getRank());
+        }
+
+        for(Card c :playDeck)
+        {
+            Rank rankCheck = c.getRank();
+            if(checkArray.contains(rankCheck))
+            {
+                return true;
             }
         }
         isValid = false;
@@ -138,6 +143,7 @@ public class GameLogic {
 
     public static GameServerResponse playerMove(PlayerAction playerAction) {
 
+            String end = "";
             Card playCard;
             int playStack = playerAction.getStack();
 
@@ -160,7 +166,10 @@ public class GameLogic {
                 } else if (playStack == 7) {
                     table7.add(playCard);
                 }
-                //if(playerOne.size() < 1)
+                if(playerOne.size() < 1)
+                {
+                    end = "END1";
+                }
 
             }
             if (playerAction.getPlayer().equals("player2")) {
@@ -182,7 +191,10 @@ public class GameLogic {
                 } else if (playStack == 7) {
                     table7.add(playCard);
                 }
-               // if(playerTwo.size() < 1)
+               if(playerTwo.size() < 1)
+                {
+                    end = "END2";
+                }
             }
             if(checkMove() == false)
         {
@@ -225,6 +237,7 @@ public class GameLogic {
         gameBoardSpaces.add(gameBoardSpace7);
 
         gameServerResponse.setGameBoard(gameBoardSpaces);
+        gameServerResponse.setMessage(end);
 
         return gameServerResponse;
     }
@@ -281,6 +294,10 @@ public class GameLogic {
         table7.removeAll(table7);
     }
 
+    /**
+     * redealExisting redeals the game from each player's hand if there
+     * are no longer any matching cards on the table for them to play on
+     */
     public static void redealExisting()
     {
         playDeck.add(playerOne.get(0));
