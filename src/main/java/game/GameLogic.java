@@ -256,35 +256,35 @@ public class GameLogic {
         List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
 
         GameBoardSpace gameBoardSpace0 = new GameBoardSpace();
-        gameBoardSpace0.setCard(table0.get(table0.size()-1));
+        gameBoardSpace0.setCard(table0.get(0));
         gameBoardSpaces.add(gameBoardSpace0);
 
         GameBoardSpace gameBoardSpace1 = new GameBoardSpace();
-        gameBoardSpace1.setCard(table1.get(table1.size()-1));
+        gameBoardSpace1.setCard(table1.get(0));
         gameBoardSpaces.add(gameBoardSpace1);
 
         GameBoardSpace gameBoardSpace2 = new GameBoardSpace();
-        gameBoardSpace2.setCard(table2.get(table2.size()-1));
+        gameBoardSpace2.setCard(table2.get(0));
         gameBoardSpaces.add(gameBoardSpace2);
 
         GameBoardSpace gameBoardSpace3 = new GameBoardSpace();
-        gameBoardSpace3.setCard(table3.get(table3.size()-1));
+        gameBoardSpace3.setCard(table3.get(0));
         gameBoardSpaces.add(gameBoardSpace3);
 
         GameBoardSpace gameBoardSpace4 = new GameBoardSpace();
-        gameBoardSpace4.setCard(table4.get(table4.size()-1));
+        gameBoardSpace4.setCard(table4.get(0));
         gameBoardSpaces.add(gameBoardSpace4);
 
         GameBoardSpace gameBoardSpace5 = new GameBoardSpace();
-        gameBoardSpace5.setCard(table5.get(table5.size()-1));
+        gameBoardSpace5.setCard(table5.get(0));
         gameBoardSpaces.add(gameBoardSpace5);
 
         GameBoardSpace gameBoardSpace6 = new GameBoardSpace();
-        gameBoardSpace6.setCard(table6.get(table6.size()-1));
+        gameBoardSpace6.setCard(table6.get(0));
         gameBoardSpaces.add(gameBoardSpace6);
 
         GameBoardSpace gameBoardSpace7 = new GameBoardSpace();
-        gameBoardSpace7.setCard(table7.get(table7.size()-1));
+        gameBoardSpace7.setCard(table7.get(0));
         gameBoardSpaces.add(gameBoardSpace7);
 
         gameServerResponse.setGameBoard(gameBoardSpaces);
@@ -359,6 +359,15 @@ public class GameLogic {
         playDeck.add(5, playerTwo.get(1));
         playDeck.add(6, playerTwo.get(2));
         playDeck.add(7, playerTwo.get(3));
+
+        playerOne.remove(0);
+        playerOne.remove(1);
+        playerOne.remove(2);
+        playerOne.remove(3);
+        playerTwo.remove(0);
+        playerTwo.remove(1);
+        playerTwo.remove(2);
+        playerTwo.remove(3);
 
         table0.add(playDeck.get(0));
         table1.add(playDeck.get(1));
