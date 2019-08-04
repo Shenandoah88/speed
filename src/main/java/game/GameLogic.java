@@ -121,14 +121,13 @@ public class GameLogic {
      */
 
     public static boolean checkMove() {
-        boolean valid = checkTable();
+        boolean valid;
 
         if (checkTable() == true) {
             valid = true;
-
         } else {
-            valid = false;
             restartGame();
+            valid = false;
         }
 
         return valid;
@@ -144,27 +143,27 @@ public class GameLogic {
     public static GameServerResponse playerMove(PlayerAction playerAction) {
 
             String end = "";
-            Card playCard;
             int playStack = playerAction.getStack();
 
+
             if (playerAction.getPlayer().equals("player1")) {
-                playCard = playerOne.remove(0);
-                if (playStack == 0) {
-                    table0.add(playCard);
-                } else if (playStack == 1) {
-                    table1.add(playCard);
-                } else if (playStack == 2) {
-                    table2.add(playCard);
-                } else if (playStack == 3) {
-                    table3.add(playCard);
-                } else if (playStack == 4) {
-                    table4.add(playCard);
-                } else if (playStack == 5) {
-                    table5.add(playCard);
-                } else if (playStack == 6) {
-                    table6.add(playCard);
-                } else if (playStack == 7) {
-                    table7.add(playCard);
+                Card PlayCard1 = playerOne.remove(0);
+                if (playStack == 0 && checkMove() == true) {
+                    table0.add(PlayCard1);
+                } else if (playStack == 1 && checkMove() == true) {
+                    table1.add(PlayCard1);
+                } else if (playStack == 2 && checkMove() == true) {
+                    table2.add(PlayCard1);
+                } else if (playStack == 3 && checkMove() == true) {
+                    table3.add(PlayCard1);
+                } else if (playStack == 4 && checkMove() == true) {
+                    table4.add(PlayCard1);
+                } else if (playStack == 5 && checkMove() == true) {
+                    table5.add(PlayCard1);
+                } else if (playStack == 6 && checkMove() == true) {
+                    table6.add(PlayCard1);
+                } else if (playStack == 7 && checkMove() == true) {
+                    table7.add(PlayCard1);
                 }
                 if(playerOne.size() < 1)
                 {
@@ -173,23 +172,23 @@ public class GameLogic {
 
             }
             if (playerAction.getPlayer().equals("player2")) {
-                playCard = playerTwo.remove(0);
-                if (playStack == 0) {
-                    table0.add(playCard);
-                } else if (playStack == 1) {
-                    table1.add(playCard);
-                } else if (playStack == 2) {
-                    table2.add(playCard);
-                } else if (playStack == 3) {
-                    table3.add(playCard);
-                } else if (playStack == 4) {
-                    table4.add(playCard);
-                } else if (playStack == 5) {
-                    table5.add(playCard);
-                } else if (playStack == 6) {
-                    table6.add(playCard);
-                } else if (playStack == 7) {
-                    table7.add(playCard);
+                 Card playCard2 = playerTwo.remove(0);
+                if (playStack == 0 && checkMove() == true) {
+                    table0.add(playCard2);
+                } else if (playStack == 1 && checkMove() == true) {
+                    table1.add(playCard2);
+                } else if (playStack == 2 && checkMove() == true) {
+                    table2.add(playCard2);
+                } else if (playStack == 3 && checkMove() == true) {
+                    table3.add(playCard2);
+                } else if (playStack == 4 && checkMove() == true) {
+                    table4.add(playCard2);
+                } else if (playStack == 5 && checkMove() == true) {
+                    table5.add(playCard2);
+                } else if (playStack == 6 && checkMove() == true) {
+                    table6.add(playCard2);
+                } else if (playStack == 7 && checkMove() == true) {
+                    table7.add(playCard2);
                 }
                if(playerTwo.size() < 1)
                 {
