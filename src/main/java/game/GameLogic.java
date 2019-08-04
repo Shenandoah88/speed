@@ -31,7 +31,8 @@ public class GameLogic {
     static List<Card> table6 = new ArrayList<Card>();
     static List<Card> table7 = new ArrayList<Card>();
     static  List<Rank> checkArray = new ArrayList<Rank>();
-    static int isActiveMatch1;
+
+
 
 
 
@@ -73,14 +74,7 @@ public class GameLogic {
 
         //Adds each card from the table to a single array to be used
         //for discarding
-        table0.add(playDeck.get(0));
-        table1.add(playDeck.get(1));
-        table2.add(playDeck.get(2));
-        table3.add(playDeck.get(3));
-        table4.add(playDeck.get(4));
-        table5.add(playDeck.get(5));
-        table6.add(playDeck.get(6));
-        table7.add(playDeck.get(7));
+        buildStacks();
 
 
     }
@@ -249,10 +243,19 @@ public class GameLogic {
                 }
             }
 
-
         GameServerResponse gameServerResponse = new GameServerResponse();
         List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
 
+        buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
+
+
+        gameServerResponse.setGameBoard(gameBoardSpaces);
+        gameServerResponse.setMessage(end);
+
+        return gameServerResponse;
+    }
+
+    private static void buildGameBoardSpace(List<GameBoardSpace> gameBoardSpaces, List<Card> table0, List<Card> table1, List<Card> table2, List<Card> table3, List<Card> table4, List<Card> table5, List<Card> table6, List<Card> table7) {
         GameBoardSpace gameBoardSpace0 = new GameBoardSpace();
         gameBoardSpace0.setCard(table0.get(0));
         gameBoardSpaces.add(gameBoardSpace0);
@@ -284,12 +287,8 @@ public class GameLogic {
         GameBoardSpace gameBoardSpace7 = new GameBoardSpace();
         gameBoardSpace7.setCard(table7.get(0));
         gameBoardSpaces.add(gameBoardSpace7);
-
-        gameServerResponse.setGameBoard(gameBoardSpaces);
-        gameServerResponse.setMessage(end);
-
-        return gameServerResponse;
     }
+
     /**
      * This method picks up the 4 piles in front of each player
      * and add them to their hand. This allows the game to continue
@@ -367,6 +366,19 @@ public class GameLogic {
         playerTwo.remove(2);
         playerTwo.remove(3);
 
+        buildStacks();
+
+        GameServerResponse gameServerResponse = new GameServerResponse();
+        List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
+
+        buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
+
+
+        gameServerResponse.setGameBoard(gameBoardSpaces);
+
+    }
+
+    private static void buildStacks() {
         table0.add(playDeck.get(0));
         table1.add(playDeck.get(1));
         table2.add(playDeck.get(2));
@@ -375,9 +387,8 @@ public class GameLogic {
         table5.add(playDeck.get(5));
         table6.add(playDeck.get(6));
         table7.add(playDeck.get(7));
-
-        
     }
+
     /**
      * restartGame is called when there are no matches available on the table to
      * play each player picks up the 4 stack of cards in front of them, then each
