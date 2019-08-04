@@ -171,7 +171,7 @@ public class GameLogic {
     public static boolean checkMove() {
         boolean valid;
 
-        if (checkTable() == true) {
+        if (checkTable()) {
             valid = true;
         } else {
             restartGame();
@@ -193,33 +193,32 @@ public class GameLogic {
             String end = "";
             int playStack = playerAction.getStack();
 
-            if(checkMove() != true)
+            if(!checkMove())
             {
                 restartGame();
             }
             else {
 
                 if (playerAction.getPlayer().equals("player1")) {
-                    Card PlayCard1 = playerOne.remove(0);
-                    if (playStack == 0 && checkMove() == true) {
-                        table0.add(0, PlayCard1);
+                    if (playStack == 0 && checkMove()) {
+                        table0.add(0, playerOne.remove(0));
                         ///I believe we need to add to the top, or to the top of
                         //playDeck here so that it is recognized
 
-                    } else if (playStack == 1 && checkMove() == true) {
-                        table1.add(0, PlayCard1);
-                    } else if (playStack == 2 && checkMove() == true) {
-                        table2.add(0, PlayCard1);
-                    } else if (playStack == 3 && checkMove() == true) {
-                        table3.add(0, PlayCard1);
-                    } else if (playStack == 4 && checkMove() == true) {
-                        table4.add(0,PlayCard1);
-                    } else if (playStack == 5 && checkMove() == true) {
-                        table5.add(0,PlayCard1);
-                    } else if (playStack == 6 && checkMove() == true) {
-                        table6.add(0,PlayCard1);
-                    } else if (playStack == 7 && checkMove() == true) {
-                        table7.add(0,PlayCard1);
+                    } else if (playStack == 1 && checkMove()) {
+                        table1.add(0, playerOne.remove(0));
+                    } else if (playStack == 2 && checkMove()) {
+                        table2.add(0, playerOne.remove(0));
+                    } else if (playStack == 3 && checkMove()) {
+                        table3.add(0, playerOne.remove(0));
+                    } else if (playStack == 4 && checkMove()) {
+                        table4.add(0, playerOne.remove(0));
+                    } else if (playStack == 5 && checkMove()) {
+                        table5.add(0, playerOne.remove(0));
+                    } else if (playStack == 6 && checkMove()) {
+                        table6.add(0, playerOne.remove(0));
+                    } else if (playStack == 7 && checkMove()) {
+                        table7.add(0, playerOne.remove(0));
                     }
                     if (playerOne.size() < 1) {
                         end = "END1";
@@ -227,23 +226,22 @@ public class GameLogic {
 
                 }
                 if (playerAction.getPlayer().equals("player2")) {
-                    Card playCard2 = playerTwo.remove(0);
-                    if (playStack == 0 && checkMove() == true) {
-                        table0.add(0,playCard2);
-                    } else if (playStack == 1 && checkMove() == true) {
-                        table1.add(0,playCard2);
-                    } else if (playStack == 2 && checkMove() == true) {
-                        table2.add(0,playCard2);
-                    } else if (playStack == 3 && checkMove() == true) {
-                        table3.add(0,playCard2);
-                    } else if (playStack == 4 && checkMove() == true) {
-                        table4.add(0,playCard2);
-                    } else if (playStack == 5 && checkMove() == true) {
-                        table5.add(0,playCard2);
-                    } else if (playStack == 6 && checkMove() == true) {
-                        table6.add(0,playCard2);
-                    } else if (playStack == 7 && checkMove() == true) {
-                        table7.add(0,playCard2);
+                    if (playStack == 0 && checkMove()) {
+                        table0.add(0, playerTwo.remove(0));
+                    } else if (playStack == 1 && checkMove()) {
+                        table1.add(0, playerTwo.remove(0));
+                    } else if (playStack == 2 && checkMove()) {
+                        table2.add(0, playerTwo.remove(0));
+                    } else if (playStack == 3 && checkMove()) {
+                        table3.add(0, playerTwo.remove(0));
+                    } else if (playStack == 4 && checkMove()) {
+                        table4.add(0, playerTwo.remove(0));
+                    } else if (playStack == 5 && checkMove()) {
+                        table5.add(0, playerTwo.remove(0));
+                    } else if (playStack == 6 && checkMove()) {
+                        table6.add(0, playerTwo.remove(0));
+                    } else if (playStack == 7 && checkMove()) {
+                        table7.add(0, playerTwo.remove(0));
                     }
                     if (playerTwo.size() < 1) {
                         end = "END2";
@@ -377,6 +375,8 @@ public class GameLogic {
         table5.add(playDeck.get(5));
         table6.add(playDeck.get(6));
         table7.add(playDeck.get(7));
+
+        
     }
     /**
      * restartGame is called when there are no matches available on the table to
