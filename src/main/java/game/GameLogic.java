@@ -30,7 +30,7 @@ public class GameLogic {
     static List<Card> table5 = new ArrayList<Card>();
     static List<Card> table6 = new ArrayList<Card>();
     static List<Card> table7 = new ArrayList<Card>();
-
+    static  List<Rank> checkArray = new ArrayList<Rank>();
 
 
     /*
@@ -93,8 +93,9 @@ public class GameLogic {
 
     public static boolean checkTable() {
         boolean isValid = false;
+        checkArray.removeAll(checkArray);
 
-        List<Rank> checkArray = new ArrayList<Rank>();
+
         for(int i = 0; i < 8; i++)
         {
             checkArray.add(playDeck.get(i).getRank());
@@ -144,7 +145,6 @@ public class GameLogic {
 
             String end = "";
             int playStack = playerAction.getStack();
-
 
             if (playerAction.getPlayer().equals("player1")) {
                 Card PlayCard1 = playerOne.remove(0);
@@ -196,9 +196,9 @@ public class GameLogic {
                 }
             }
             if(checkMove() == false)
-        {
-            restartGame();
-        }
+                {
+                    restartGame();
+                }
 
         GameServerResponse gameServerResponse = new GameServerResponse();
         List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
