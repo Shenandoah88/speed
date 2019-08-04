@@ -31,6 +31,8 @@ public class GameLogic {
     static List<Card> table6 = new ArrayList<Card>();
     static List<Card> table7 = new ArrayList<Card>();
     static  List<Rank> checkArray = new ArrayList<Rank>();
+    static int isActiveMatch1;
+
 
 
     /*
@@ -94,24 +96,69 @@ public class GameLogic {
     public static boolean checkTable() {
         boolean isValid = false;
         checkArray.removeAll(checkArray);
+        Rank t0 = table0.get(0).getRank();
+        Rank t1 = table1.get(0).getRank();
+        Rank t2 = table2.get(0).getRank();
+        Rank t3 = table3.get(0).getRank();
+        Rank t4 = table4.get(0).getRank();
+        Rank t5 = table5.get(0).getRank();
+        Rank t6 = table6.get(0).getRank();
+        Rank t7 = table7.get(0).getRank();
 
+        checkArray.add(t0);
+        checkArray.add(t1);
+        checkArray.add(t2);
+        checkArray.add(t3);
+        checkArray.add(t4);
+        checkArray.add(t5);
+        checkArray.add(t6);
+        checkArray.add(t7);
 
-        for(int i = 0; i < 8; i++)
+        if(checkArray.contains(t0))
         {
-            checkArray.add(playDeck.get(i).getRank());
+            //find a way to designate this as a matching card to be able to play on
+            return true;
         }
-
-        for(Card c :playDeck)
+        else if(checkArray.contains(t1))
         {
-            Rank rankCheck = c.getRank();
-            if(checkArray.contains(rankCheck))
-            {
-                return true;
-            }
+            //find a way to designate this as a matching card to be able to play on
+            return true;
         }
-        isValid = false;
-        restartGame();
-        return isValid;
+       else  if(checkArray.contains(t2))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t3))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t4))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t5))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t6))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t7))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else
+        {
+            restartGame();
+            return false;
+        }
 
     }
 
@@ -146,59 +193,64 @@ public class GameLogic {
             String end = "";
             int playStack = playerAction.getStack();
 
-            if (playerAction.getPlayer().equals("player1")) {
-                Card PlayCard1 = playerOne.remove(0);
-                if (playStack == 0 && checkMove() == true) {
-                    table0.add(PlayCard1);
-                } else if (playStack == 1 && checkMove() == true) {
-                    table1.add(PlayCard1);
-                } else if (playStack == 2 && checkMove() == true) {
-                    table2.add(PlayCard1);
-                } else if (playStack == 3 && checkMove() == true) {
-                    table3.add(PlayCard1);
-                } else if (playStack == 4 && checkMove() == true) {
-                    table4.add(PlayCard1);
-                } else if (playStack == 5 && checkMove() == true) {
-                    table5.add(PlayCard1);
-                } else if (playStack == 6 && checkMove() == true) {
-                    table6.add(PlayCard1);
-                } else if (playStack == 7 && checkMove() == true) {
-                    table7.add(PlayCard1);
-                }
-                if(playerOne.size() < 1)
-                {
-                    end = "END1";
-                }
+            if(checkMove() != true)
+            {
+                restartGame();
+            }
+            else {
 
+                if (playerAction.getPlayer().equals("player1")) {
+                    Card PlayCard1 = playerOne.remove(0);
+                    if (playStack == 0 && checkMove() == true) {
+                        table0.add(0, PlayCard1);
+                        ///I believe we need to add to the top, or to the top of
+                        //playDeck here so that it is recognized
+
+                    } else if (playStack == 1 && checkMove() == true) {
+                        table1.add(0, PlayCard1);
+                    } else if (playStack == 2 && checkMove() == true) {
+                        table2.add(0, PlayCard1);
+                    } else if (playStack == 3 && checkMove() == true) {
+                        table3.add(0, PlayCard1);
+                    } else if (playStack == 4 && checkMove() == true) {
+                        table4.add(0,PlayCard1);
+                    } else if (playStack == 5 && checkMove() == true) {
+                        table5.add(0,PlayCard1);
+                    } else if (playStack == 6 && checkMove() == true) {
+                        table6.add(0,PlayCard1);
+                    } else if (playStack == 7 && checkMove() == true) {
+                        table7.add(0,PlayCard1);
+                    }
+                    if (playerOne.size() < 1) {
+                        end = "END1";
+                    }
+
+                }
+                if (playerAction.getPlayer().equals("player2")) {
+                    Card playCard2 = playerTwo.remove(0);
+                    if (playStack == 0 && checkMove() == true) {
+                        table0.add(0,playCard2);
+                    } else if (playStack == 1 && checkMove() == true) {
+                        table1.add(0,playCard2);
+                    } else if (playStack == 2 && checkMove() == true) {
+                        table2.add(0,playCard2);
+                    } else if (playStack == 3 && checkMove() == true) {
+                        table3.add(0,playCard2);
+                    } else if (playStack == 4 && checkMove() == true) {
+                        table4.add(0,playCard2);
+                    } else if (playStack == 5 && checkMove() == true) {
+                        table5.add(0,playCard2);
+                    } else if (playStack == 6 && checkMove() == true) {
+                        table6.add(0,playCard2);
+                    } else if (playStack == 7 && checkMove() == true) {
+                        table7.add(0,playCard2);
+                    }
+                    if (playerTwo.size() < 1) {
+                        end = "END2";
+                    }
+                }
             }
-            if (playerAction.getPlayer().equals("player2")) {
-                 Card playCard2 = playerTwo.remove(0);
-                if (playStack == 0 && checkMove() == true) {
-                    table0.add(playCard2);
-                } else if (playStack == 1 && checkMove() == true) {
-                    table1.add(playCard2);
-                } else if (playStack == 2 && checkMove() == true) {
-                    table2.add(playCard2);
-                } else if (playStack == 3 && checkMove() == true) {
-                    table3.add(playCard2);
-                } else if (playStack == 4 && checkMove() == true) {
-                    table4.add(playCard2);
-                } else if (playStack == 5 && checkMove() == true) {
-                    table5.add(playCard2);
-                } else if (playStack == 6 && checkMove() == true) {
-                    table6.add(playCard2);
-                } else if (playStack == 7 && checkMove() == true) {
-                    table7.add(playCard2);
-                }
-               if(playerTwo.size() < 1)
-                {
-                    end = "END2";
-                }
-            }
-            if(checkMove() == false)
-                {
-                    restartGame();
-                }
+
 
         GameServerResponse gameServerResponse = new GameServerResponse();
         List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
@@ -299,14 +351,14 @@ public class GameLogic {
      */
     public static void redealExisting()
     {
-        playDeck.add(playerOne.get(0));
-        playDeck.add(playerOne.get(1));
-        playDeck.add(playerOne.get(2));
-        playDeck.add(playerOne.get(3));
-        playDeck.add(playerTwo.get(0));
-        playDeck.add(playerTwo.get(1));
-        playDeck.add(playerTwo.get(2));
-        playDeck.add(playerTwo.get(3));
+        playDeck.add(0,playerOne.get(0));
+        playDeck.add(1,playerOne.get(1));
+        playDeck.add(2,playerOne.get(2));
+        playDeck.add(3,playerOne.get(3));
+        playDeck.add(4,playerTwo.get(0));
+        playDeck.add(5, playerTwo.get(1));
+        playDeck.add(6, playerTwo.get(2));
+        playDeck.add(7, playerTwo.get(3));
 
         table0.add(playDeck.get(0));
         table1.add(playDeck.get(1));
