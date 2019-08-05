@@ -372,10 +372,6 @@ public class GameLogic {
         playerTwo.remove(1);
         playerTwo.remove(2);
         playerTwo.remove(3);
-
-
-
-        EventSocket.messageAllRemotes(gameServerResponse);
     }
 
 
