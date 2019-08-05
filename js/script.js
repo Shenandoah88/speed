@@ -12,6 +12,7 @@ webSocket.onopen = function () {
 };
 
 webSocket.onmessage = function (message) {
+
     console.log(message);
     console.log(JSON.parse(message.data));
 
@@ -22,14 +23,21 @@ webSocket.onmessage = function (message) {
     console.log(poop.gameBoard[0].card);
     console.log(poop.gameBoard[0].card.styleString);*/
 
-    if(poop.message == "end"){
-        console.log("end");
+    if(poop.message == "end1"){
+        console.log("end1");
+        document.getElementById("1win").innerText = "Player 1 Wins!";
     }
-    for(var corn = 0; corn < 8; corn++) {
-       var peanut = poop.gameBoard[corn].card.styleString;
-       console.log(corn);
-       console.log(peanut);
-       document.getElementById(corn).className = "dropzone" + peanut;
+    else if(poop.message == "end2"){
+        console.log("end2");
+        document.getElementById("2win").innerText = "Player 2 Wins!";
+    }
+    else {
+        for (var corn = 0; corn < 8; corn++) {
+            var peanut = poop.gameBoard[corn].card.styleString;
+            console.log(corn);
+            console.log(peanut);
+            document.getElementById(corn).className = "dropzone" + peanut;
+        }
     }
 };
 
