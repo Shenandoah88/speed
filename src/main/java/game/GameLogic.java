@@ -138,20 +138,27 @@ public class GameLogic {
         checkArray.add(table6.get(0).getCard().getRank());
         checkArray.add(table7.get(0).getCard().getRank());
 
+        
         //checks to see if any of the cards on the table match rank
         for (int i = 0; i < 8; i++) {
-            for (Rank r : checkArray)
+            if (testDeck.get(i).getRank().equals(checkArray.get(i)))
             {
-                if (testDeck.get(i).getRank().equals(r))
-                {
-                    playingTable.add(new ActiveMatchCards(testDeck.get(i), true, i));
-                    active++;
-                } else {
-                    playingTable.add(new ActiveMatchCards(testDeck.get(i), false));
-                }
+                playingTable.add(new ActiveMatchCards(testDeck.get(i), true, i));
+                active++;
+            } else {
+                playingTable.add(new ActiveMatchCards(testDeck.get(i), false));
             }
+
         }
 
+        table0.add(playingTable.get(0));
+        table1.add(playingTable.get(1));
+        table2.add(playingTable.get(2));
+        table3.add(playingTable.get(3));
+        table4.add(playingTable.get(4));
+        table5.add(playingTable.get(5));
+        table6.add(playingTable.get(6));
+        table7.add(playingTable.get(7));
         if(active > 0)
         {
             isValid = true;
