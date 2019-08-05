@@ -1,5 +1,6 @@
 package game;
 
+import jettydemo.EventSocket;
 import model.GameBoardSpace;
 import model.GameServerResponse;
 import model.PlayerAction;
@@ -376,6 +377,7 @@ public class GameLogic {
 
         gameServerResponse.setGameBoard(gameBoardSpaces);
 
+        EventSocket.messageAllRemotes(gameServerResponse);
     }
 
     private static void buildStacks() {
