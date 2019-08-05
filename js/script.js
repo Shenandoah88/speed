@@ -16,12 +16,15 @@ webSocket.onmessage = function (message) {
     console.log(JSON.parse(message.data));
 
     var poop = JSON.parse(message.data);
-    console.log(poop);
+    /*console.log(poop);
     console.log(poop.gameBoard);
     console.log(poop.gameBoard[0]);
     console.log(poop.gameBoard[0].card);
-    console.log(poop.gameBoard[0].card.styleString);
+    console.log(poop.gameBoard[0].card.styleString);*/
 
+    if(poop.message == "end"){
+        console.log("end");
+    }
     for(var corn = 0; corn < 8; corn++) {
        var peanut = poop.gameBoard[corn].card.styleString;
        console.log(corn);
@@ -31,6 +34,7 @@ webSocket.onmessage = function (message) {
 };
 
 var dragged;
+
 //regular expression for testing dropzone
 var patt = /dropzone/;
 
@@ -38,7 +42,6 @@ document.addEventListener("touchstart", function(event){
     // store a ref. on the dragged elem
     dragged = event.target;
 // make it half transparent
-    console.log(dragged.className);
     event.target.style.opacity = .9;
 });
 
@@ -49,20 +52,21 @@ document.addEventListener("touchmove", function(event){
     event.target.style.opacity = .9;
 });
 
+
 document.addEventListener("touchend", function(event) {
 // prevent default action (open as link for some elements)
     event.preventDefault();
 // move dragged elem to the selected drop target
     if (patt.test(event.target.className)) {
 
-        if(dragged.className == "player1"){
+        if(parseInt(dragged.id)< 4 ){
             var playerAction = {};
             playerAction.player = "player1";
             playerAction.stack = event.target.id;
             var playerActionJSON = JSON.stringify(playerAction);
             webSocket.send(playerActionJSON);
         }
-        else  if(dragged.className == "player2"){
+        else  if(parseInt(dragged.id)< 8 ){
             var playerAction = {};
             playerAction.player = "player2";
             playerAction.stack = event.target.id;
