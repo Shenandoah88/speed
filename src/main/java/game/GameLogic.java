@@ -1,5 +1,6 @@
 package game;
 
+import jettydemo.EventSocket;
 import model.GameBoardSpace;
 import model.GameServerResponse;
 import model.PlayerAction;
@@ -416,9 +417,6 @@ public class GameLogic {
         playerTwo.remove(1);
         playerTwo.remove(2);
         playerTwo.remove(3);
-
-
-
     }
 
 

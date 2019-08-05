@@ -490,6 +490,14 @@ td{
     background-image: url("PNG/AS.png");
 }
 
+.dropzone {
+    align-content: center;
+    height: 170px;
+    width: 98px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("PNG/AS.png");
+}
 img {
     padding: 5px;
 }

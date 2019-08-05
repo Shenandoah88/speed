@@ -16,6 +16,18 @@ public class EventSocket extends WebSocketAdapter
 {
     static List<RemoteEndpoint> remotes;
 
+    public static void messageAllRemotes(GameServerResponse message) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String response = objectMapper.writeValueAsString(message);
+            for (RemoteEndpoint remoteEndpoint : remotes) {
+                remoteEndpoint.sendString(response);
+            }
+        } catch (Exception ex) {
+            System.out.println("failed to send message to all remotes");
+        }
+    }
+
     @Override
     public void onWebSocketConnect(Session sess)
     {
