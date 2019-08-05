@@ -60,9 +60,15 @@ public class GameLogic {
         Collections.shuffle(deck);
 
         // creates 8 playing cards
-        for (int i = 0; i < 8; i++) {
-            playDeck.add(deck.get(i));
-        }
+        table0.add(deck.get(0));
+        table1.add(deck.get(1));
+        table2.add(deck.get(2));
+        table3.add(deck.get(3));
+        table4.add(deck.get(4));
+        table5.add(deck.get(5));
+        table6.add(deck.get(6));
+        table7.add(deck.get(7));
+
         //create playing hand for player 1
         for (int j = 8; j < 30; j++) {
             playerOne.add(deck.get(j));
@@ -72,9 +78,7 @@ public class GameLogic {
             playerTwo.add(deck.get(k));
         }
 
-        //Adds each card from the table to a single array to be used
-        //for discarding
-        buildStacks();
+
 
 
     }
@@ -90,6 +94,8 @@ public class GameLogic {
     public static boolean checkTable() {
         boolean isValid = false;
         checkArray.removeAll(checkArray);
+
+
         Rank t0 = table0.get(0).getRank();
         Rank t1 = table1.get(0).getRank();
         Rank t2 = table2.get(0).getRank();
@@ -348,14 +354,14 @@ public class GameLogic {
      */
     public static void redealExisting()
     {
-        playDeck.add(0,playerOne.get(0));
-        playDeck.add(1,playerOne.get(1));
-        playDeck.add(2,playerOne.get(2));
-        playDeck.add(3,playerOne.get(3));
-        playDeck.add(4,playerTwo.get(0));
-        playDeck.add(5, playerTwo.get(1));
-        playDeck.add(6, playerTwo.get(2));
-        playDeck.add(7, playerTwo.get(3));
+        table0.add(0,playerOne.get(0));
+        table1.add(1,playerOne.get(1));
+        table2.add(2,playerOne.get(2));
+        table3.add(3,playerOne.get(3));
+        table4.add(4,playerTwo.get(0));
+        table5.add(5, playerTwo.get(1));
+        table6.add(6, playerTwo.get(2));
+        table7.add(7, playerTwo.get(3));
 
         playerOne.remove(0);
         playerOne.remove(1);
@@ -365,8 +371,6 @@ public class GameLogic {
         playerTwo.remove(1);
         playerTwo.remove(2);
         playerTwo.remove(3);
-
-        buildStacks();
 
         GameServerResponse gameServerResponse = new GameServerResponse();
         List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
@@ -378,16 +382,6 @@ public class GameLogic {
 
     }
 
-    private static void buildStacks() {
-        table0.add(playDeck.get(0));
-        table1.add(playDeck.get(1));
-        table2.add(playDeck.get(2));
-        table3.add(playDeck.get(3));
-        table4.add(playDeck.get(4));
-        table5.add(playDeck.get(5));
-        table6.add(playDeck.get(6));
-        table7.add(playDeck.get(7));
-    }
 
     /**
      * restartGame is called when there are no matches available on the table to
