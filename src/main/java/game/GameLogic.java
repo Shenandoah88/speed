@@ -118,6 +118,7 @@ public class GameLogic {
         boolean isValid = false;
         int active = 0;
 
+        //creates a testDeck of the cards on the table
         testDeck.add(table0.get(0).getCard());
         testDeck.add(table1.get(0).getCard());
         testDeck.add(table2.get(0).getCard());
@@ -127,45 +128,30 @@ public class GameLogic {
         testDeck.add(table6.get(0).getCard());
         testDeck.add(table7.get(0).getCard());
 
-        //gets the ranks of the playing cards then adds to an array to check for matches
-        Rank r0 = card0.getRank();
-        Rank r1 = card1.getRank();
-        Rank r2 = card2.getRank();
-        Rank r3 = card3.getRank();
-        Rank r4 = card4.getRank();
-        Rank r5 = card5.getRank();
-        Rank r6 = card6.getRank();
-        Rank r7 = card7.getRank();
+        //creates an array of the ranks in the order they appear on the table
+        checkArray.add(table0.get(0).getCard().getRank());
+        checkArray.add(table1.get(0).getCard().getRank());
+        checkArray.add(table2.get(0).getCard().getRank());
+        checkArray.add(table3.get(0).getCard().getRank());
+        checkArray.add(table4.get(0).getCard().getRank());
+        checkArray.add(table5.get(0).getCard().getRank());
+        checkArray.add(table6.get(0).getCard().getRank());
+        checkArray.add(table7.get(0).getCard().getRank());
 
-        checkArray.add(r0);
-        checkArray.add(r1);
-        checkArray.add(r2);
-        checkArray.add(r3);
-        checkArray.add(r4);
-        checkArray.add(r5);
-        checkArray.add(r6);
-        checkArray.add(r7);
-
+        //checks to see if any of the cards on the table match rank
         for (int i = 0; i < 8; i++) {
-            Rank checking = testDeck.get(i).getRank();
-            Card c = testDeck.get(i);
-            for (int j = 0; j < 8; j++) {
-                if (checking.equals(checkArray.get(j))) {
-                    ActiveMatchCards a = new ActiveMatchCards(c, true, i);
-                    playingTable.add(a);
+            for (Rank r : checkArray)
+            {
+                if (testDeck.get(i).getRank().equals(r))
+                {
+                    playingTable.add(new ActiveMatchCards(testDeck.get(i), true, i));
+                    active++;
                 } else {
-                    ActiveMatchCards ab = new ActiveMatchCards(c, false);
-                    playingTable.add(ab);
+                    playingTable.add(new ActiveMatchCards(testDeck.get(i), false));
                 }
             }
         }
 
-        for (int i = 0; i < 8; i++) {
-            if (playingTable.get(i).getIndexMatch() >= 0)
-            {
-                active++;
-            }
-        }
         if(active > 0)
         {
             isValid = true;
