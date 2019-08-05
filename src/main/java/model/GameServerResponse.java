@@ -4,6 +4,14 @@ import java.util.List;
 
 public class GameServerResponse {
 
+    private String message;
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     private String player;
     public String getPlayer() {
         return player;

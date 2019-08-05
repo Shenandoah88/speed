@@ -1,5 +1,6 @@
 package game;
 
+import jettydemo.EventSocket;
 import model.GameBoardSpace;
 import model.GameServerResponse;
 import model.PlayerAction;
@@ -30,6 +31,9 @@ public class GameLogic {
     static List<Card> table5 = new ArrayList<Card>();
     static List<Card> table6 = new ArrayList<Card>();
     static List<Card> table7 = new ArrayList<Card>();
+    static  List<Rank> checkArray = new ArrayList<Rank>();
+
+
 
 
 
@@ -57,9 +61,15 @@ public class GameLogic {
         Collections.shuffle(deck);
 
         // creates 8 playing cards
-        for (int i = 0; i < 8; i++) {
-            playDeck.add(deck.get(i));
-        }
+        table0.add(deck.get(0));
+        table1.add(deck.get(1));
+        table2.add(deck.get(2));
+        table3.add(deck.get(3));
+        table4.add(deck.get(4));
+        table5.add(deck.get(5));
+        table6.add(deck.get(6));
+        table7.add(deck.get(7));
+
         //create playing hand for player 1
         for (int j = 8; j < 30; j++) {
             playerOne.add(deck.get(j));
@@ -69,16 +79,7 @@ public class GameLogic {
             playerTwo.add(deck.get(k));
         }
 
-        //Adds each card from the table to a single array to be used
-        //for discarding
-        table0.add(playDeck.get(0));
-        table1.add(playDeck.get(1));
-        table2.add(playDeck.get(2));
-        table3.add(playDeck.get(3));
-        table4.add(playDeck.get(4));
-        table5.add(playDeck.get(5));
-        table6.add(playDeck.get(6));
-        table7.add(playDeck.get(7));
+
 
 
     }
@@ -93,19 +94,72 @@ public class GameLogic {
 
     public static boolean checkTable() {
         boolean isValid = false;
+        checkArray.removeAll(checkArray);
 
-        for (Card match : playDeck) {
-            Rank check = match.getRank();
-            for (Card checkMatch : playDeck) {
-                Rank matchCheck = checkMatch.getRank();
-                if (matchCheck == check) {
-                    return true;
-                }
-            }
+
+        Rank t0 = table0.get(0).getRank();
+        Rank t1 = table1.get(0).getRank();
+        Rank t2 = table2.get(0).getRank();
+        Rank t3 = table3.get(0).getRank();
+        Rank t4 = table4.get(0).getRank();
+        Rank t5 = table5.get(0).getRank();
+        Rank t6 = table6.get(0).getRank();
+        Rank t7 = table7.get(0).getRank();
+
+        checkArray.add(t0);
+        checkArray.add(t1);
+        checkArray.add(t2);
+        checkArray.add(t3);
+        checkArray.add(t4);
+        checkArray.add(t5);
+        checkArray.add(t6);
+        checkArray.add(t7);
+
+        if(checkArray.contains(t0))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
         }
-        isValid = false;
-        restartGame();
-        return isValid;
+        else if(checkArray.contains(t1))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+       else  if(checkArray.contains(t2))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t3))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t4))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t5))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t6))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else if(checkArray.contains(t7))
+        {
+            //find a way to designate this as a matching card to be able to play on
+            return true;
+        }
+        else
+        {
+            restartGame();
+            return false;
+        }
 
     }
 
@@ -116,14 +170,13 @@ public class GameLogic {
      */
 
     public static boolean checkMove() {
-        boolean valid = checkTable();
+        boolean valid;
 
-        if (checkTable() == true) {
+        if (checkTable()) {
             valid = true;
-
         } else {
-            valid = false;
             restartGame();
+            valid = false;
         }
 
         return valid;
@@ -138,96 +191,111 @@ public class GameLogic {
 
     public static GameServerResponse playerMove(PlayerAction playerAction) {
 
-            Card playCard;
+            String end = "";
             int playStack = playerAction.getStack();
 
-            if (playerAction.getPlayer().equals("player1")) {
-                playCard = playerOne.remove(0);
-                if (playStack == 0) {
-                    table0.add(playCard);
-                } else if (playStack == 1) {
-                    table1.add(playCard);
-                } else if (playStack == 2) {
-                    table2.add(playCard);
-                } else if (playStack == 3) {
-                    table3.add(playCard);
-                } else if (playStack == 4) {
-                    table4.add(playCard);
-                } else if (playStack == 5) {
-                    table5.add(playCard);
-                } else if (playStack == 6) {
-                    table6.add(playCard);
-                } else if (playStack == 7) {
-                    table7.add(playCard);
-                }
-                //if(playerOne.size() < 1)
+            if(!checkMove())
+            {
+                restartGame();
+            }
+            else {
 
-            }
-            if (playerAction.getPlayer().equals("player2")) {
-                playCard = playerTwo.remove(0);
-                if (playStack == 0) {
-                    table0.add(playCard);
-                } else if (playStack == 1) {
-                    table1.add(playCard);
-                } else if (playStack == 2) {
-                    table2.add(playCard);
-                } else if (playStack == 3) {
-                    table3.add(playCard);
-                } else if (playStack == 4) {
-                    table4.add(playCard);
-                } else if (playStack == 5) {
-                    table5.add(playCard);
-                } else if (playStack == 6) {
-                    table6.add(playCard);
-                } else if (playStack == 7) {
-                    table7.add(playCard);
+                if (playerAction.getPlayer().equals("player1")) {
+                    if (playStack == 0 && checkMove()) {
+                        table0.add(0, playerOne.remove(0));
+                        ///I believe we need to add to the top, or to the top of
+                        //playDeck here so that it is recognized
+
+                    } else if (playStack == 1 && checkMove()) {
+                        table1.add(0, playerOne.remove(0));
+                    } else if (playStack == 2 && checkMove()) {
+                        table2.add(0, playerOne.remove(0));
+                    } else if (playStack == 3 && checkMove()) {
+                        table3.add(0, playerOne.remove(0));
+                    } else if (playStack == 4 && checkMove()) {
+                        table4.add(0, playerOne.remove(0));
+                    } else if (playStack == 5 && checkMove()) {
+                        table5.add(0, playerOne.remove(0));
+                    } else if (playStack == 6 && checkMove()) {
+                        table6.add(0, playerOne.remove(0));
+                    } else if (playStack == 7 && checkMove()) {
+                        table7.add(0, playerOne.remove(0));
+                    }
+                    if (playerOne.size() < 1) {
+                        end = "END1";
+                    }
+
                 }
-               // if(playerTwo.size() < 1)
+                if (playerAction.getPlayer().equals("player2")) {
+                    if (playStack == 0 && checkMove()) {
+                        table0.add(0, playerTwo.remove(0));
+                    } else if (playStack == 1 && checkMove()) {
+                        table1.add(0, playerTwo.remove(0));
+                    } else if (playStack == 2 && checkMove()) {
+                        table2.add(0, playerTwo.remove(0));
+                    } else if (playStack == 3 && checkMove()) {
+                        table3.add(0, playerTwo.remove(0));
+                    } else if (playStack == 4 && checkMove()) {
+                        table4.add(0, playerTwo.remove(0));
+                    } else if (playStack == 5 && checkMove()) {
+                        table5.add(0, playerTwo.remove(0));
+                    } else if (playStack == 6 && checkMove()) {
+                        table6.add(0, playerTwo.remove(0));
+                    } else if (playStack == 7 && checkMove()) {
+                        table7.add(0, playerTwo.remove(0));
+                    }
+                    if (playerTwo.size() < 1) {
+                        end = "END2";
+                    }
+                }
             }
-            if(checkMove() == false)
-        {
-            restartGame();
-        }
 
         GameServerResponse gameServerResponse = new GameServerResponse();
         List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
 
-        GameBoardSpace gameBoardSpace0 = new GameBoardSpace();
-        gameBoardSpace0.setCard(table0.get(table0.size()-1));
-        gameBoardSpaces.add(gameBoardSpace0);
+        buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
 
-        GameBoardSpace gameBoardSpace1 = new GameBoardSpace();
-        gameBoardSpace1.setCard(table1.get(table1.size()-1));
-        gameBoardSpaces.add(gameBoardSpace1);
-
-        GameBoardSpace gameBoardSpace2 = new GameBoardSpace();
-        gameBoardSpace2.setCard(table2.get(table2.size()-1));
-        gameBoardSpaces.add(gameBoardSpace2);
-
-        GameBoardSpace gameBoardSpace3 = new GameBoardSpace();
-        gameBoardSpace3.setCard(table3.get(table3.size()-1));
-        gameBoardSpaces.add(gameBoardSpace3);
-
-        GameBoardSpace gameBoardSpace4 = new GameBoardSpace();
-        gameBoardSpace4.setCard(table4.get(table4.size()-1));
-        gameBoardSpaces.add(gameBoardSpace4);
-
-        GameBoardSpace gameBoardSpace5 = new GameBoardSpace();
-        gameBoardSpace5.setCard(table5.get(table5.size()-1));
-        gameBoardSpaces.add(gameBoardSpace5);
-
-        GameBoardSpace gameBoardSpace6 = new GameBoardSpace();
-        gameBoardSpace6.setCard(table6.get(table6.size()-1));
-        gameBoardSpaces.add(gameBoardSpace6);
-
-        GameBoardSpace gameBoardSpace7 = new GameBoardSpace();
-        gameBoardSpace7.setCard(table7.get(table7.size()-1));
-        gameBoardSpaces.add(gameBoardSpace7);
 
         gameServerResponse.setGameBoard(gameBoardSpaces);
+        gameServerResponse.setMessage(end);
 
         return gameServerResponse;
     }
+
+    private static void buildGameBoardSpace(List<GameBoardSpace> gameBoardSpaces, List<Card> table0, List<Card> table1, List<Card> table2, List<Card> table3, List<Card> table4, List<Card> table5, List<Card> table6, List<Card> table7) {
+        GameBoardSpace gameBoardSpace0 = new GameBoardSpace();
+        gameBoardSpace0.setCard(table0.get(0));
+        gameBoardSpaces.add(gameBoardSpace0);
+
+        GameBoardSpace gameBoardSpace1 = new GameBoardSpace();
+        gameBoardSpace1.setCard(table1.get(0));
+        gameBoardSpaces.add(gameBoardSpace1);
+
+        GameBoardSpace gameBoardSpace2 = new GameBoardSpace();
+        gameBoardSpace2.setCard(table2.get(0));
+        gameBoardSpaces.add(gameBoardSpace2);
+
+        GameBoardSpace gameBoardSpace3 = new GameBoardSpace();
+        gameBoardSpace3.setCard(table3.get(0));
+        gameBoardSpaces.add(gameBoardSpace3);
+
+        GameBoardSpace gameBoardSpace4 = new GameBoardSpace();
+        gameBoardSpace4.setCard(table4.get(0));
+        gameBoardSpaces.add(gameBoardSpace4);
+
+        GameBoardSpace gameBoardSpace5 = new GameBoardSpace();
+        gameBoardSpace5.setCard(table5.get(0));
+        gameBoardSpaces.add(gameBoardSpace5);
+
+        GameBoardSpace gameBoardSpace6 = new GameBoardSpace();
+        gameBoardSpace6.setCard(table6.get(0));
+        gameBoardSpaces.add(gameBoardSpace6);
+
+        GameBoardSpace gameBoardSpace7 = new GameBoardSpace();
+        gameBoardSpace7.setCard(table7.get(0));
+        gameBoardSpaces.add(gameBoardSpace7);
+    }
+
     /**
      * This method picks up the 4 piles in front of each player
      * and add them to their hand. This allows the game to continue
@@ -281,26 +349,32 @@ public class GameLogic {
         table7.removeAll(table7);
     }
 
+    /**
+     * redealExisting redeals the game from each player's hand if there
+     * are no longer any matching cards on the table for them to play on
+     */
     public static void redealExisting()
     {
-        playDeck.add(playerOne.get(0));
-        playDeck.add(playerOne.get(1));
-        playDeck.add(playerOne.get(2));
-        playDeck.add(playerOne.get(3));
-        playDeck.add(playerTwo.get(0));
-        playDeck.add(playerTwo.get(1));
-        playDeck.add(playerTwo.get(2));
-        playDeck.add(playerTwo.get(3));
+        table0.add(0,playerOne.get(0));
+        table1.add(1,playerOne.get(1));
+        table2.add(2,playerOne.get(2));
+        table3.add(3,playerOne.get(3));
+        table4.add(4,playerTwo.get(0));
+        table5.add(5, playerTwo.get(1));
+        table6.add(6, playerTwo.get(2));
+        table7.add(7, playerTwo.get(3));
 
-        table0.add(playDeck.get(0));
-        table1.add(playDeck.get(1));
-        table2.add(playDeck.get(2));
-        table3.add(playDeck.get(3));
-        table4.add(playDeck.get(4));
-        table5.add(playDeck.get(5));
-        table6.add(playDeck.get(6));
-        table7.add(playDeck.get(7));
+        playerOne.remove(0);
+        playerOne.remove(1);
+        playerOne.remove(2);
+        playerOne.remove(3);
+        playerTwo.remove(0);
+        playerTwo.remove(1);
+        playerTwo.remove(2);
+        playerTwo.remove(3);
     }
+
+
     /**
      * restartGame is called when there are no matches available on the table to
      * play each player picks up the 4 stack of cards in front of them, then each
