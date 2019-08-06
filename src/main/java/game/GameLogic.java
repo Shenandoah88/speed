@@ -20,7 +20,7 @@ public class GameLogic {
     static List<Card> deck = new ArrayList<Card>();
     static List<Card> playerOne = new ArrayList<Card>();
     static List<Card> playerTwo = new ArrayList<Card>();
-    static List<Card> testDeck = new ArrayList<Card>();
+    static List<ActiveMatchCards> testDeck = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> playingTable = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> table0 = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> table1 = new ArrayList<ActiveMatchCards>();
@@ -41,7 +41,6 @@ public class GameLogic {
     static Card card6;
     static Card card7;
 
-
     /*
      * Creates the 52 card deck for playing
      */
@@ -57,9 +56,9 @@ public class GameLogic {
 
     /**
      * dealGame first shuffles the deck of cards Creates lays out the 8 cards on the
-     * table for playing Deals 22 cards to each player for playing
-     * adds each card from the table array into an array of itself. These will be used
-     * for the discarding and to check matching
+     * table for playing Deals 22 cards to each player for playing adds each card
+     * from the table array into an array of itself. These will be used for the
+     * discarding and to check matching
      */
     public static void dealGame() {
         createDeck();
@@ -94,20 +93,16 @@ public class GameLogic {
         table6.add(a6);
         table7.add(a7);
 
-
-
-        //create playing hand for player 1
+        // create playing hand for player 1
         for (int j = 8; j < 30; j++) {
             playerOne.add(deck.get(j));
         }
-        //creates playing hand for player 2
+        // creates playing hand for player 2
         for (int k = 30; k < 52; k++) {
             playerTwo.add(deck.get(k));
         }
 
-
     }
-
 
     /**
      * checkTable checks to see if there are any matching cards on the table, if
@@ -118,17 +113,17 @@ public class GameLogic {
         boolean isValid = false;
         int active = 0;
 
-        //creates a testDeck of the cards on the table
-        testDeck.add(table0.get(0).getCard());
-        testDeck.add(table1.get(0).getCard());
-        testDeck.add(table2.get(0).getCard());
-        testDeck.add(table3.get(0).getCard());
-        testDeck.add(table4.get(0).getCard());
-        testDeck.add(table5.get(0).getCard());
-        testDeck.add(table6.get(0).getCard());
-        testDeck.add(table7.get(0).getCard());
+        // creates a testDeck of the cards on the table
+        testDeck.add(table0.get(0));
+        testDeck.add(table1.get(0));
+        testDeck.add(table2.get(0));
+        testDeck.add(table3.get(0));
+        testDeck.add(table4.get(0));
+        testDeck.add(table5.get(0));
+        testDeck.add(table6.get(0));
+        testDeck.add(table7.get(0));
 
-        //creates an array of the ranks in the order they appear on the table
+        // creates an array of the ranks in the order they appear on the table
         checkArray.add(table0.get(0).getCard().getRank());
         checkArray.add(table1.get(0).getCard().getRank());
         checkArray.add(table2.get(0).getCard().getRank());
@@ -138,16 +133,18 @@ public class GameLogic {
         checkArray.add(table6.get(0).getCard().getRank());
         checkArray.add(table7.get(0).getCard().getRank());
 
-
-        //checks to see if any of the cards on the table match rank
+        // checks to see if any of the cards on the table match rank
         for (int i = 0; i < 8; i++) {
-            if (testDeck.get(i).getRank().equals(checkArray.get(i)))
-            {
-                playingTable.add(new ActiveMatchCards(testDeck.get(i), true, i));
-                active++;
+            for (int j = 0; j < 8; j++) {
+                if (i == j || testDeck.get(i).getPlayable()) {
+                } else if (testDeck.get(i).getCard().getRank().equals(checkArray.get(j))) {
+                    playingTable.add(new ActiveMatchCards(testDeck.get(i).getCard(), true));
+                    active++;
+                }
             }
-        }
 
+
+        }
 
         table0.add(playingTable.get(0));
         table1.add(playingTable.get(1));
@@ -157,12 +154,12 @@ public class GameLogic {
         table5.add(playingTable.get(5));
         table6.add(playingTable.get(6));
         table7.add(playingTable.get(7));
-        if(active > 0)
+
+        if (active > 0)
+
         {
             isValid = true;
-        }
-        else
-        {
+        } else {
             isValid = false;
         }
         return isValid;
@@ -211,7 +208,6 @@ public class GameLogic {
                     if (playStack == 0 && checkMove()) {
                         table0.add(0, pa1);
                         playerOne.remove(p1);
-                       // checkTable(); ***************************************** Should we check this here?
                     } else if (playStack == 1 && checkMove()) {
                         table1.add(0, pa1);
                         playerOne.remove(p1);
