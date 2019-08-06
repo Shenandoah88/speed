@@ -21,7 +21,6 @@ public class GameLogic {
     static List<Card> playerOne = new ArrayList<Card>();
     static List<Card> playerTwo = new ArrayList<Card>();
     static List<ActiveMatchCards> testDeck = new ArrayList<ActiveMatchCards>();
-    static List<ActiveMatchCards> playingTable = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> table0 = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> table1 = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> table2 = new ArrayList<ActiveMatchCards>();
@@ -30,7 +29,6 @@ public class GameLogic {
     static List<ActiveMatchCards> table5 = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> table6 = new ArrayList<ActiveMatchCards>();
     static List<ActiveMatchCards> table7 = new ArrayList<ActiveMatchCards>();
-    static List<Rank> checkArray = new ArrayList<Rank>();
 
     static Card card0;
     static Card card1;
@@ -171,20 +169,13 @@ public class GameLogic {
             String end = "";
             int playStack = playerAction.getStack();
 
-        if (playerOne.size() < 1) {
-            end = "END1";
-        }
-        if (playerTwo.size() < 1) {
-            end = "END2";
-        }
-
-            if(!checkMove())
+            if(!checkTable())
             {
                 restartGame();
             }
             else {
 
-                if (playerAction.getPlayer().equals("player1")) {
+                if (playerAction.getPlayer().equals("player1") && playerOne.size() >= 1) {
                     Card p1 = playerOne.get(0);
                     ActiveMatchCards pa1 = new ActiveMatchCards(p1, false);
                     if (playStack == 0 && table0.get(0).playable) {
@@ -220,10 +211,12 @@ public class GameLogic {
                         playerOne.remove(p1);
                         checkTable();
                     }
-
-
                 }
-                if (playerAction.getPlayer().equals("player2")) {
+                else
+                {
+                    end = "END1";
+                }
+                if (playerAction.getPlayer().equals("player2") && playerTwo.size() >= 1) {
                     Card p2 = playerTwo.get(0);
                     ActiveMatchCards pa2 = new ActiveMatchCards(p2, false);
                     if (playStack == 0 && table0.get(0).playable) {
@@ -259,7 +252,10 @@ public class GameLogic {
                         playerTwo.remove(p2);
                         checkTable();
                     }
-
+                }
+                else
+                {
+                    end = "END2";
                 }
             }
 
@@ -387,9 +383,6 @@ public class GameLogic {
         table6.add(0, c6);
         table7.add(0, c7);
 
-
-
-
         playerOne.remove(0);
         playerOne.remove(1);
         playerOne.remove(2);
@@ -398,6 +391,7 @@ public class GameLogic {
         playerTwo.remove(1);
         playerTwo.remove(2);
         playerTwo.remove(3);
+
     }
 
 
