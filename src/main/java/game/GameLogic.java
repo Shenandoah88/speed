@@ -196,6 +196,13 @@ public class GameLogic {
             String end = "";
             int playStack = playerAction.getStack();
 
+        if (playerOne.size() < 1) {
+            end = "END1";
+        }
+        if (playerTwo.size() < 1) {
+            end = "END2";
+        }
+
             if(!checkMove())
             {
                 restartGame();
@@ -230,9 +237,7 @@ public class GameLogic {
                         table7.add(0, pa1);
                         playerOne.remove(p1);
                     }
-                    if (playerOne.size() < 1) {
-                        end = "END1";
-                    }
+
 
                 }
                 if (playerAction.getPlayer().equals("player2")) {
@@ -263,9 +268,7 @@ public class GameLogic {
                         table7.add(0, pa2);
                         playerTwo.remove(p2);
                     }
-                    if (playerTwo.size() < 1) {
-                        end = "END2";
-                    }
+
                 }
             }
 
