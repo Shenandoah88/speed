@@ -190,27 +190,35 @@ public class GameLogic {
                     if (playStack == 0 && table0.get(0).playable) {
                         table0.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     } else if (playStack == 1 && table1.get(0).playable) {
                         table1.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     } else if (playStack == 2 && table2.get(0).playable) {
                         table2.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     } else if (playStack == 3 && table3.get(0).playable) {
                         table3.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     } else if (playStack == 4 && table4.get(0).playable) {
                         table4.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     } else if (playStack == 5 && table5.get(0).playable) {
                         table5.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     } else if (playStack == 6 && table6.get(0).playable) {
                         table6.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     } else if (playStack == 7 && table7.get(0).playable) {
                         table7.add(0, pa1);
                         playerOne.remove(p1);
+                        checkTable();
                     }
 
 
@@ -221,27 +229,35 @@ public class GameLogic {
                     if (playStack == 0 && table0.get(0).playable) {
                         table0.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     } else if (playStack == 1 && table1.get(0).playable) {
                         table1.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     } else if (playStack == 2 && table2.get(0).playable) {
                         table2.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     } else if (playStack == 3 && table3.get(0).playable) {
                         table3.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     } else if (playStack == 4 && table4.get(0).playable) {
                         table4.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     } else if (playStack == 5 && table5.get(0).playable) {
                         table5.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     } else if (playStack == 6 && table6.get(0).playable) {
                         table6.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     } else if (playStack == 7 && table7.get(0).playable) {
                         table7.add(0, pa2);
                         playerTwo.remove(p2);
+                        checkTable();
                     }
 
                 }
@@ -363,13 +379,13 @@ public class GameLogic {
         ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.get(3), false);
 
         table0.add(0, c0);
-        table1.add(1, c1);
-        table2.add(2, c2);
-        table3.add(3, c3);
-        table4.add(4, c4);
-        table5.add(5, c5);
-        table6.add(6, c6);
-        table7.add(7, c7);
+        table1.add(0, c1);
+        table2.add(0, c2);
+        table3.add(0, c3);
+        table4.add(0, c4);
+        table5.add(0, c5);
+        table6.add(0, c6);
+        table7.add(0, c7);
 
 
 
