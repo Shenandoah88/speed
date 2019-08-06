@@ -408,4 +408,11 @@ public class GameLogic {
 
     }
 
+    public static GameServerResponse getCurrentState() {
+        GameServerResponse gameServerResponse = new GameServerResponse();
+        List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
+        buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
+        gameServerResponse.setGameBoard(gameBoardSpaces);
+        return gameServerResponse;
+    }
 }

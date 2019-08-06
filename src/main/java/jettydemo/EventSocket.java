@@ -41,6 +41,34 @@ public class EventSocket extends WebSocketAdapter
         while (!GameLogic.checkTable()) {
             System.out.println("game dead, redealing");
         }
+        ObjectMapper objectMapper = new ObjectMapper();
+        GameServerResponse gameServerResponse = GameLogic.getCurrentState();
+        try {
+            String response = objectMapper.writeValueAsString(gameServerResponse);
+            for (RemoteEndpoint remoteEndpoint : remotes) {
+                remoteEndpoint.sendString(response);
+            }
+        } catch (Exception ex) {
+            System.out.println("failed to send string to remote");
+        }
+    }
+
+
+    @Override
+    public void onWebSocketClose(int statusCode, String reason)
+    {
+        super.onWebSocketClose(statusCode,reason);
+        if (remotes != null) {
+            remotes.remove(getRemote());
+        }
+        System.out.println("Socket Closed: [" + statusCode + "] " + reason);
+    }
+
+    @Override
+    public void onWebSocketError(Throwable cause)
+    {
+        super.onWebSocketError(cause);
+        cause.printStackTrace(System.err);
     }
 
     @Override
@@ -95,20 +123,4 @@ public class EventSocket extends WebSocketAdapter
 
     }
 
-    @Override
-    public void onWebSocketClose(int statusCode, String reason)
-    {
-        super.onWebSocketClose(statusCode,reason);
-        if (remotes != null) {
-            remotes.remove(getRemote());
-        }
-        System.out.println("Socket Closed: [" + statusCode + "] " + reason);
-    }
-
-    @Override
-    public void onWebSocketError(Throwable cause)
-    {
-        super.onWebSocketError(cause);
-        cause.printStackTrace(System.err);
-    }
 }

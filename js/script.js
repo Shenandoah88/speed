@@ -23,11 +23,11 @@ webSocket.onmessage = function (message) {
     console.log(poop.gameBoard[0].card);
     console.log(poop.gameBoard[0].card.styleString);*/
 
-    if(poop.message == "end1"){
+    if(poop.message == "END1"){
         console.log("end1");
         document.getElementById("1win").innerText = "Player 1 Wins!";
     }
-    else if(poop.message == "end2"){
+    else if(poop.message == "END2"){
         console.log("end2");
         document.getElementById("2win").innerText = "Player 2 Wins!";
     }
