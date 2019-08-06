@@ -109,6 +109,7 @@ public class GameLogic {
      */
     public static boolean checkTable() {
         boolean active = false;
+        testDeck.clear();
 
         testDeck.add(table0.get(0));
         testDeck.add(table1.get(0));
@@ -134,7 +135,6 @@ public class GameLogic {
                 }
             }
         }
-
         return active;
     }
 
