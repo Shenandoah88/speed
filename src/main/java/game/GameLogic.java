@@ -379,13 +379,13 @@ public class GameLogic {
         ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.get(3), false);
 
         table0.add(0, c0);
-        table1.add(1, c1);
-        table2.add(2, c2);
-        table3.add(3, c3);
-        table4.add(4, c4);
-        table5.add(5, c5);
-        table6.add(6, c6);
-        table7.add(7, c7);
+        table1.add(0, c1);
+        table2.add(0, c2);
+        table3.add(0, c3);
+        table4.add(0, c4);
+        table5.add(0, c5);
+        table6.add(0, c6);
+        table7.add(0, c7);
 
 
 
