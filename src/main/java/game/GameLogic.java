@@ -110,10 +110,8 @@ public class GameLogic {
      * true the game is paused and restartGame is called.
      */
     public static boolean checkTable() {
-        boolean isValid = false;
-        int active = 0;
+        boolean active = false;
 
-        // creates a testDeck of the cards on the table
         testDeck.add(table0.get(0));
         testDeck.add(table1.get(0));
         testDeck.add(table2.get(0));
@@ -123,46 +121,23 @@ public class GameLogic {
         testDeck.add(table6.get(0));
         testDeck.add(table7.get(0));
 
-        // creates an array of the ranks in the order they appear on the table
-        checkArray.add(table0.get(0).getCard().getRank());
-        checkArray.add(table1.get(0).getCard().getRank());
-        checkArray.add(table2.get(0).getCard().getRank());
-        checkArray.add(table3.get(0).getCard().getRank());
-        checkArray.add(table4.get(0).getCard().getRank());
-        checkArray.add(table5.get(0).getCard().getRank());
-        checkArray.add(table6.get(0).getCard().getRank());
-        checkArray.add(table7.get(0).getCard().getRank());
-
-        // checks to see if any of the cards on the table match rank
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (i == j || testDeck.get(i).getPlayable()) {
-                } else if (testDeck.get(i).getCard().getRank().equals(checkArray.get(j))) {
-                    playingTable.add(new ActiveMatchCards(testDeck.get(i).getCard(), true));
-                    active++;
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                if(i != j)
+                {
+                    if(testDeck.get(i).getCard().getRank() == testDeck.get(j).getCard().getRank())
+                    {
+                        testDeck.get(i).playable = true;
+                        testDeck.get(j).playable = true;
+                        active = true;
+                    }
                 }
             }
-
-
         }
 
-        table0.add(playingTable.get(0));
-        table1.add(playingTable.get(1));
-        table2.add(playingTable.get(2));
-        table3.add(playingTable.get(3));
-        table4.add(playingTable.get(4));
-        table5.add(playingTable.get(5));
-        table6.add(playingTable.get(6));
-        table7.add(playingTable.get(7));
-
-        if (active > 0)
-
-        {
-            isValid = true;
-        } else {
-            isValid = false;
-        }
-        return isValid;
+        return active;
     }
 
     /**
