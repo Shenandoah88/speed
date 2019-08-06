@@ -4,6 +4,7 @@
 #gradlew.bat
 **/build
 **/.idea
+*.class
 
 
 
