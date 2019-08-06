@@ -109,7 +109,7 @@ public class GameLogic {
      */
     public static boolean checkTable() {
         boolean active = false;
-
+        testDeck.clear();
         testDeck.add(table0.get(0));
         testDeck.add(table1.get(0));
         testDeck.add(table2.get(0));
@@ -134,7 +134,6 @@ public class GameLogic {
                 }
             }
         }
-
         return active;
     }
 
@@ -173,9 +172,16 @@ public class GameLogic {
             {
                 restartGame();
             }
-            else {
+            if(playerOne.size() < 1)
+            {
+                end = "END1";
+            }
+            if(playerTwo.size() < 1) {
+                end = "END2";
+            }
 
-                if (playerAction.getPlayer().equals("player1") && playerOne.size() >= 1) {
+
+                if (playerAction.getPlayer().equals("player1")) {
                     Card p1 = playerOne.get(0);
                     ActiveMatchCards pa1 = new ActiveMatchCards(p1, false);
                     if (playStack == 0 && table0.get(0).playable) {
@@ -212,11 +218,8 @@ public class GameLogic {
                         checkTable();
                     }
                 }
-                else
-                {
-                    end = "END1";
-                }
-                if (playerAction.getPlayer().equals("player2") && playerTwo.size() >= 1) {
+
+                if (playerAction.getPlayer().equals("player2")) {
                     Card p2 = playerTwo.get(0);
                     ActiveMatchCards pa2 = new ActiveMatchCards(p2, false);
                     if (playStack == 0 && table0.get(0).playable) {
@@ -253,11 +256,6 @@ public class GameLogic {
                         checkTable();
                     }
                 }
-                else
-                {
-                    end = "END2";
-                }
-            }
 
         GameServerResponse gameServerResponse = new GameServerResponse();
         List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
@@ -374,14 +372,14 @@ public class GameLogic {
         ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.get(2),false);
         ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.get(3), false);
 
-        table0.add(0, c0);
-        table1.add(0, c1);
-        table2.add(0, c2);
-        table3.add(0, c3);
-        table4.add(0, c4);
-        table5.add(0, c5);
-        table6.add(0, c6);
-        table7.add(0, c7);
+        table0.add(c0);
+        table1.add(c1);
+        table2.add(c2);
+        table3.add(c3);
+        table4.add(c4);
+        table5.add(c5);
+        table6.add(c6);
+        table7.add(c7);
 
         playerOne.remove(0);
         playerOne.remove(1);
