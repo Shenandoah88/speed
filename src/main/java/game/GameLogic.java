@@ -43,6 +43,8 @@ public class GameLogic {
      * Creates the 52 card deck for playing
      */
     public static List<Card> createDeck() {
+
+        List<Card> deck = new ArrayList<Card>();
         for (Suit s : Suit.values()) {
             for (Rank r : Rank.values()) {
                 Card c = new Card(r, s);
@@ -59,7 +61,7 @@ public class GameLogic {
      * discarding and to check matching
      */
     public static void dealGame() {
-        createDeck();
+        deck = createDeck();
         Collections.shuffle(deck);
         int playable = 5;
 
