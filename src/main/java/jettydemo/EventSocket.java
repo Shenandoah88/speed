@@ -38,7 +38,7 @@ public class EventSocket extends WebSocketAdapter
         remotes.add(getRemote());
         System.out.println("Socket Connected: " + sess);
         GameLogic.dealGame();
-        while (!GameLogic.checkTable()) {
+        while (!GameLogic.checkMove()) {
             System.out.println("game dead, redealing");
         }
         ObjectMapper objectMapper = new ObjectMapper();
