@@ -1,6 +1,5 @@
 package game;
 
-import jettydemo.EventSocket;
 import model.GameBoardSpace;
 import model.GameServerResponse;
 import model.PlayerAction;
@@ -44,7 +43,6 @@ public class GameLogic {
      */
     public static List<Card> createDeck() {
 
-        List<Card> deck = new ArrayList<Card>();
         for (Suit s : Suit.values()) {
             for (Rank r : Rank.values()) {
                 Card c = new Card(r, s);
@@ -95,6 +93,7 @@ public class GameLogic {
 
         // create playing hand for player 1
         for (int j = 8; j < 30; j++) {
+
             playerOne.add(deck.get(j));
         }
         // creates playing hand for player 2

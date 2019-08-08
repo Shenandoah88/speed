@@ -11,6 +11,10 @@ public class ActiveMatchCards {
         this.card = card;
     }
 
+    public ActiveMatchCards(Card card)
+    {
+        this.card = card;
+    }
 
 
     public Card getCard()
