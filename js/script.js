@@ -1,4 +1,5 @@
-var webSocket = new WebSocket("ws://localhost:8080/events");
+var wsaddr = "ws://" + window.location.host + "/events";
+var webSocket = new WebSocket(wsaddr);
 webSocket.onopen = function () {
 
     /*
