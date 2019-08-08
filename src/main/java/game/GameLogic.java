@@ -61,9 +61,9 @@ public class GameLogic {
      * discarding and to check matching
      */
     public static void dealGame() {
+        deck.clear();
         deck = createDeck();
         Collections.shuffle(deck);
-        int playable = 5;
 
         // creates 8 playing cards and adds them to a test array to check for matches
         card0 = deck.get(0);
@@ -325,37 +325,38 @@ public class GameLogic {
         for (ActiveMatchCards zero : table0) {
             Card p1a = zero.getCard();
             playerOne.add(p1a);
+        }
             for (ActiveMatchCards one : table1) {
                 Card p1b = one.getCard();
                 playerOne.add(p1b);
+            }
                 for (ActiveMatchCards two : table2) {
                     Card p1c = two.getCard();
                     playerOne.add(p1c);
+                }
                     for (ActiveMatchCards three : table3) {
                         Card p1d = three.getCard();
                         playerOne.add(p1d);
                     }
-                }
-            }
-        }
+           
 
         // pick up for player 2
         for (ActiveMatchCards four : table4) {
             Card p2a = four.getCard();
             playerTwo.add(p2a);
+        }
             for (ActiveMatchCards five : table5) {
                 Card p2b = five.getCard();
                 playerTwo.add(p2b);
+            }
                 for (ActiveMatchCards six : table6) {
                     Card p2c = six.getCard();
                     playerTwo.add(p2c);
+                }
                     for (ActiveMatchCards seven : table7) {
                         Card p2d = seven.getCard();
                         playerTwo.add(p2d);
                     }
-                }
-            }
-        }
 
         table0.clear();
         table1.clear();
@@ -375,6 +376,7 @@ public class GameLogic {
         table5.add(c5);
         table6.add(c6);
         table7.add(c7);
+
 
 
     }
