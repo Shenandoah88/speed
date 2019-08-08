@@ -308,31 +308,31 @@ public class GameLogic {
     }
 
     /**
-     * redealExisting redeals the game from each player's hand if there
-     * are no longer any matching cards on the table for them to play on
+     * restartGame should pick up the cards from the table, place them in the player's hand and redeal
+     * the table appropriately
      */
     public static void restartGame()
     {
-        ActiveMatchCards c0 = new ActiveMatchCards(playerOne.get(0), false);
-        ActiveMatchCards c1 = new ActiveMatchCards(playerOne.get(1), false);
-        ActiveMatchCards c2 = new ActiveMatchCards(playerOne.get(2), false);
-        ActiveMatchCards c3 = new ActiveMatchCards(playerOne.get(3), false);
-        ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.get(0), false);
-        ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.get(1), false);
-        ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.get(2),false);
-        ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.get(3), false);
+        ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
+        ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
+        ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
+        ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(3), false);
+        ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.remove(0), false);
+        ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(1), false);
+        ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(2),false);
+        ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(3), false);
 
         for (ActiveMatchCards zero : table0) {
             Card p1a = zero.getCard();
+            playerOne.add(p1a);
             for (ActiveMatchCards one : table1) {
                 Card p1b = one.getCard();
+                playerOne.add(p1b);
                 for (ActiveMatchCards two : table2) {
                     Card p1c = two.getCard();
+                    playerOne.add(p1c);
                     for (ActiveMatchCards three : table3) {
                         Card p1d = three.getCard();
-                        playerOne.add(p1a);
-                        playerOne.add(p1b);
-                        playerOne.add(p1c);
                         playerOne.add(p1d);
                     }
                 }
@@ -342,29 +342,29 @@ public class GameLogic {
         // pick up for player 2
         for (ActiveMatchCards four : table4) {
             Card p2a = four.getCard();
+            playerTwo.add(p2a);
             for (ActiveMatchCards five : table5) {
                 Card p2b = five.getCard();
+                playerTwo.add(p2b);
                 for (ActiveMatchCards six : table6) {
                     Card p2c = six.getCard();
+                    playerTwo.add(p2c);
                     for (ActiveMatchCards seven : table7) {
                         Card p2d = seven.getCard();
-                        playerTwo.add(p2a);
-                        playerTwo.add(p2b);
-                        playerTwo.add(p2c);
                         playerTwo.add(p2d);
                     }
                 }
             }
         }
 
-        table0.removeAll(table0);
-        table1.removeAll(table1);
-        table2.removeAll(table2);
-        table3.removeAll(table3);
-        table4.removeAll(table4);
-        table5.removeAll(table5);
-        table6.removeAll(table6);
-        table7.removeAll(table7);
+        table0.clear();
+        table1.clear();
+        table2.clear();
+        table3.clear();
+        table4.clear();
+        table5.clear();
+        table6.clear();
+        table7.clear();
 
 
         table0.add(c0);
@@ -376,14 +376,6 @@ public class GameLogic {
         table6.add(c6);
         table7.add(c7);
 
-        playerOne.remove(0);
-        playerOne.remove(1);
-        playerOne.remove(2);
-        playerOne.remove(3);
-        playerTwo.remove(0);
-        playerTwo.remove(1);
-        playerTwo.remove(2);
-        playerTwo.remove(3);
 
     }
 
