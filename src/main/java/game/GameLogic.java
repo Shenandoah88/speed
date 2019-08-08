@@ -174,16 +174,16 @@ public class GameLogic {
             {
                 restartGame();
             }
-            if(playerOne.size() < 1)
+            else if(playerOne.size() < 1)
             {
                 end = "END1";
             }
-            if(playerTwo.size() < 1) {
+            else if(playerTwo.size() < 1) {
                 end = "END2";
             }
 
 
-                if (playerAction.getPlayer().equals("player1") && playerOne.size() > 1) {
+            else if (playerAction.getPlayer().equals("player1") && playerOne.size() > 0) {
                     Card p1 = playerOne.get(0);
                     ActiveMatchCards pa1 = new ActiveMatchCards(p1, false);
                     if (playStack == 0 && table0.get(0).playable) {
@@ -221,7 +221,7 @@ public class GameLogic {
                     }
                 }
 
-                if (playerAction.getPlayer().equals("player2") && playerTwo.size() > 1) {
+                if (playerAction.getPlayer().equals("player2") && playerTwo.size() > 0) {
                     Card p2 = playerTwo.get(0);
                     ActiveMatchCards pa2 = new ActiveMatchCards(p2, false);
                     if (playStack == 0 && table0.get(0).playable) {
