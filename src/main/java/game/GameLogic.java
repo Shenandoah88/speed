@@ -308,58 +308,6 @@ public class GameLogic {
     }
 
     /**
-     * This method picks up the 4 piles in front of each player
-     * and add them to their hand. This allows the game to continue
-     * when there are no matching cards on the table
-     */
-    public static void pickUpDiscarded() {
-        // pick up for player one
-        for (ActiveMatchCards zero : table0) {
-            Card c0 = zero.getCard();
-            for (ActiveMatchCards one : table1) {
-                Card c1 = one.getCard();
-                for (ActiveMatchCards two : table2) {
-                    Card c2 = two.getCard();
-                    for (ActiveMatchCards three : table3) {
-                        Card c3 = three.getCard();
-                        playerOne.add(c0);
-                        playerOne.add(c1);
-                        playerOne.add(c2);
-                        playerOne.add(c3);
-                    }
-                }
-            }
-        }
-
-        // pick up for player 2
-        for (ActiveMatchCards four : table4) {
-            Card c4 = four.getCard();
-            for (ActiveMatchCards five : table5) {
-                Card c5 = five.getCard();
-                for (ActiveMatchCards six : table6) {
-                    Card c6 = six.getCard();
-                    for (ActiveMatchCards seven : table7) {
-                        Card c7 = seven.getCard();
-                        playerTwo.add(c4);
-                        playerTwo.add(c5);
-                        playerTwo.add(c6);
-                        playerTwo.add(c7);
-                    }
-                }
-            }
-        }
-
-        table0.removeAll(table0);
-        table1.removeAll(table1);
-        table2.removeAll(table2);
-        table3.removeAll(table3);
-        table4.removeAll(table4);
-        table5.removeAll(table5);
-        table6.removeAll(table6);
-        table7.removeAll(table7);
-    }
-
-    /**
      * redealExisting redeals the game from each player's hand if there
      * are no longer any matching cards on the table for them to play on
      */
@@ -373,6 +321,51 @@ public class GameLogic {
         ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.get(1), false);
         ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.get(2),false);
         ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.get(3), false);
+
+        for (ActiveMatchCards zero : table0) {
+            Card p1a = zero.getCard();
+            for (ActiveMatchCards one : table1) {
+                Card p1b = one.getCard();
+                for (ActiveMatchCards two : table2) {
+                    Card p1c = two.getCard();
+                    for (ActiveMatchCards three : table3) {
+                        Card p1d = three.getCard();
+                        playerOne.add(p1a);
+                        playerOne.add(p1b);
+                        playerOne.add(p1c);
+                        playerOne.add(p1d);
+                    }
+                }
+            }
+        }
+
+        // pick up for player 2
+        for (ActiveMatchCards four : table4) {
+            Card p2a = four.getCard();
+            for (ActiveMatchCards five : table5) {
+                Card p2b = five.getCard();
+                for (ActiveMatchCards six : table6) {
+                    Card p2c = six.getCard();
+                    for (ActiveMatchCards seven : table7) {
+                        Card p2d = seven.getCard();
+                        playerTwo.add(p2a);
+                        playerTwo.add(p2b);
+                        playerTwo.add(p2c);
+                        playerTwo.add(p2d);
+                    }
+                }
+            }
+        }
+
+        table0.removeAll(table0);
+        table1.removeAll(table1);
+        table2.removeAll(table2);
+        table3.removeAll(table3);
+        table4.removeAll(table4);
+        table5.removeAll(table5);
+        table6.removeAll(table6);
+        table7.removeAll(table7);
+
 
         table0.add(c0);
         table1.add(c1);
@@ -403,7 +396,6 @@ public class GameLogic {
 
     public static void restartGame()
     {
-        pickUpDiscarded();
         redealExisting();
 
     }
