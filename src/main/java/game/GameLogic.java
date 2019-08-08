@@ -437,13 +437,13 @@ public class GameLogic {
                 table7.clear();
 
                 ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
-                ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
-                ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
-                ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(3), false);
+                ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(0), false);
+                ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(0), false);
+                ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(0), false);
                 ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.remove(0), false);
-                ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(1), false);
-                ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(2), false);
-                ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(3), false);
+                ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(0), false);
+                ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(0), false);
+                ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(0), false);
 
 
                 table0.add(c0);
