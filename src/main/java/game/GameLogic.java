@@ -183,7 +183,7 @@ public class GameLogic {
             }
 
 
-                if (playerAction.getPlayer().equals("player1")) {
+                if (playerAction.getPlayer().equals("player1") && playerOne.size() > 1) {
                     Card p1 = playerOne.get(0);
                     ActiveMatchCards pa1 = new ActiveMatchCards(p1, false);
                     if (playStack == 0 && table0.get(0).playable) {
@@ -221,7 +221,7 @@ public class GameLogic {
                     }
                 }
 
-                if (playerAction.getPlayer().equals("player2")) {
+                if (playerAction.getPlayer().equals("player2") && playerTwo.size() > 1) {
                     Card p2 = playerTwo.get(0);
                     ActiveMatchCards pa2 = new ActiveMatchCards(p2, false);
                     if (playStack == 0 && table0.get(0).playable) {
@@ -357,7 +357,7 @@ public class GameLogic {
         table5.clear();
         table6.clear();
         table7.clear();
-        
+
         ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
         ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
         ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
