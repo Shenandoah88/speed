@@ -12,8 +12,8 @@ import java.util.List;
 
 /**
  * game.GameLogic contains all the logic used to play the game California Speed
- * @author shenandoahstubbs
  *
+ * @author shenandoahstubbs
  */
 public class GameLogic {
 
@@ -112,6 +112,7 @@ public class GameLogic {
     public static boolean checkTable() {
         boolean active = false;
         testDeck.clear();
+
         testDeck.add(table0.get(0));
         testDeck.add(table1.get(0));
         testDeck.add(table2.get(0));
@@ -121,275 +122,348 @@ public class GameLogic {
         testDeck.add(table6.get(0));
         testDeck.add(table7.get(0));
 
-        for(int i = 0; i < 8; i++)
-        {
-            for(int j = 0; j < 8; j++)
-            {
-                if(i != j)
-                {
-                    if(testDeck.get(i).getCard().getRank() == testDeck.get(j).getCard().getRank())
-                    {
-                        testDeck.get(i).playable = true;
-                        testDeck.get(j).playable = true;
-                        active = true;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (i != j) {
+                    if (testDeck.get(i).getCard().getRank() == testDeck.get(j).getCard().getRank()) {
+                        switch (i) {
+                            case 0: {
+                                table0.get(0).playable = true;
+                                break;
+                            }
+                            case 1: {
+                                table1.get(0).playable = true;
+                                break;
+                            }
+                            case 2: {
+                                table2.get(0).playable = true;
+                                break;
+                            }
+                            case 3: {
+                                table3.get(0).playable = true;
+                                break;
+                            }
+                            case 4: {
+                                table4.get(0).playable = true;
+                                break;
+                            }
+                            case 5: {
+                                table5.get(0).playable = true;
+                                break;
+                            }
+                            case 6: {
+                                table6.get(0).playable = true;
+                                break;
+                            }
+                            case 7: {
+                                table7.get(0).playable = true;
+                                break;
+                            }
+                        }
+                            switch (j) {
+                                case 0: {
+                                    table0.get(0).playable = true;
+                                    break;
+                                }
+                                case 1: {
+                                    table1.get(0).playable = true;
+                                    break;
+                                }
+                                case 2: {
+                                    table2.get(0).playable = true;
+                                    break;
+                                }
+                                case 3: {
+                                    table3.get(0).playable = true;
+                                    break;
+                                }
+                                case 4: {
+                                    table4.get(0).playable = true;
+                                    break;
+                                }
+                                case 5: {
+                                    table5.get(0).playable = true;
+                                    break;
+                                }
+                                case 6: {
+                                    table6.get(0).playable = true;
+                                    break;
+                                }
+                                case 7: {
+                                    table7.get(0).playable = true;
+                                    break;
+                                }
+                            }
+
+                                testDeck.get(i).playable = true;
+                                testDeck.get(j).playable = true;
+                                active = true;
+
+                            }
+                        }
                     }
                 }
-            }
-        }
-        return active;
-    }
-
-    /**
-     * checkMove checks to see if a player move is valid and allowed meaning that
-     * the card was played on a card on the table that had another card on the table
-     * that matched in rank
-     */
-
-    public static boolean checkMove() {
-        boolean valid;
-
-        if (checkTable()) {
-            valid = true;
-        } else {
-            restartGame();
-            valid = false;
-        }
-
-        return valid;
-    }
-
-    /**
-     * playerMove takes the player'suit card from their hand and places
-     * it on the appropriate stack. In order to do this playerMove
-     * gets the id for the player making the move and the id of the stack attempting
-     * to be played on.
-     */
-
-    public static GameServerResponse playerMove(PlayerAction playerAction) {
-
-            String end = "";
-            int playStack = playerAction.getStack();
-
-            if(!checkTable())
+            if(table0.get(0).playable)
             {
-                restartGame();
+                active = true;
             }
-            else if(playerOne.size() < 1)
-            {
-                end = "END1";
-            }
-            else if(playerTwo.size() < 1) {
-                end = "END2";
+        if(table1.get(0).playable)
+        {
+            active = true;
+        }
+        if(table2.get(0).playable)
+        {
+            active = true;
+        }
+        if(table3.get(0).playable)
+        {
+            active = true;
+        }
+        if(table4.get(0).playable)
+        {
+            active = true;
+        }
+        if(table5.get(0).playable)
+        {
+            active = true;
+        }
+        if(table6.get(0).playable)
+        {
+            active = true;
+        }
+        if(table7.get(0).playable)
+        {
+            active = true;
+        }
+                return active;
             }
 
+            /**
+             * checkMove checks to see if a player move is valid and allowed meaning that
+             * the card was played on a card on the table that had another card on the table
+             * that matched in rank
+             */
 
-            else if (playerAction.getPlayer().equals("player1") && playerOne.size() > 0) {
+            public static boolean checkMove () {
+                boolean valid;
+
+                if (checkTable()) {
+                    valid = true;
+                } else {
+                    restartGame();
+                    valid = false;
+                }
+
+                return valid;
+            }
+
+            /**
+             * playerMove takes the player'suit card from their hand and places
+             * it on the appropriate stack. In order to do this playerMove
+             * gets the id for the player making the move and the id of the stack attempting
+             * to be played on.
+             */
+
+            public static GameServerResponse playerMove (PlayerAction playerAction){
+
+                String end = "";
+                int playStack = playerAction.getStack();
+
+                if (!checkTable()) {
+                    restartGame();
+                } else if (playerOne.size() < 1) {
+                    end = "END1";
+                } else if (playerTwo.size() < 1) {
+                    end = "END2";
+                } else if (playerAction.getPlayer().equals("player1") && playerOne.size() > 0) {
                     Card p1 = playerOne.get(0);
                     ActiveMatchCards pa1 = new ActiveMatchCards(p1, false);
-                    if (playStack == 0 && table0.get(0).playable) {
+                    if (playStack == 0 && table0.get(0).playable && checkTable()) {
                         table0.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
-                    } else if (playStack == 1 && table1.get(0).playable) {
+                    } else if (playStack == 1 && table1.get(0).playable && checkTable()) {
                         table1.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
-                    } else if (playStack == 2 && table2.get(0).playable) {
+                    } else if (playStack == 2 && table2.get(0).playable && checkTable()) {
                         table2.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
-                    } else if (playStack == 3 && table3.get(0).playable) {
+                    } else if (playStack == 3 && table3.get(0).playable && checkTable()) {
                         table3.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
-                    } else if (playStack == 4 && table4.get(0).playable) {
+                    } else if (playStack == 4 && table4.get(0).playable && checkTable()) {
                         table4.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
-                    } else if (playStack == 5 && table5.get(0).playable) {
+                    } else if (playStack == 5 && table5.get(0).playable && checkTable()) {
                         table5.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
-                    } else if (playStack == 6 && table6.get(0).playable) {
+                    } else if (playStack == 6 && table6.get(0).playable && checkTable()) {
                         table6.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
-                    } else if (playStack == 7 && table7.get(0).playable) {
+                    } else if (playStack == 7 && table7.get(0).playable && checkTable()) {
                         table7.add(0, pa1);
                         playerOne.remove(p1);
-                        checkTable();
                     }
                 }
 
                 if (playerAction.getPlayer().equals("player2") && playerTwo.size() > 0) {
                     Card p2 = playerTwo.get(0);
                     ActiveMatchCards pa2 = new ActiveMatchCards(p2, false);
-                    if (playStack == 0 && table0.get(0).playable) {
+                    if (playStack == 0 && table0.get(0).playable && checkTable()) {
                         table0.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
-                    } else if (playStack == 1 && table1.get(0).playable) {
+                    } else if (playStack == 1 && table1.get(0).playable && checkTable()) {
                         table1.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
-                    } else if (playStack == 2 && table2.get(0).playable) {
+                    } else if (playStack == 2 && table2.get(0).playable && checkTable()) {
                         table2.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
-                    } else if (playStack == 3 && table3.get(0).playable) {
+                    } else if (playStack == 3 && table3.get(0).playable && checkTable()) {
                         table3.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
-                    } else if (playStack == 4 && table4.get(0).playable) {
+                    } else if (playStack == 4 && table4.get(0).playable && checkTable()) {
                         table4.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
-                    } else if (playStack == 5 && table5.get(0).playable) {
+                    } else if (playStack == 5 && table5.get(0).playable && checkTable()) {
                         table5.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
-                    } else if (playStack == 6 && table6.get(0).playable) {
+                    } else if (playStack == 6 && table6.get(0).playable && checkTable()) {
                         table6.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
-                    } else if (playStack == 7 && table7.get(0).playable) {
+                    } else if (playStack == 7 && table7.get(0).playable && checkTable()) {
                         table7.add(0, pa2);
                         playerTwo.remove(p2);
-                        checkTable();
                     }
                 }
 
-        GameServerResponse gameServerResponse = new GameServerResponse();
-        List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
+                GameServerResponse gameServerResponse = new GameServerResponse();
+                List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
 
-        buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
+                buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
 
 
-        gameServerResponse.setGameBoard(gameBoardSpaces);
-        gameServerResponse.setMessage(end);
+                gameServerResponse.setGameBoard(gameBoardSpaces);
+                gameServerResponse.setMessage(end);
 
-        return gameServerResponse;
-    }
+                return gameServerResponse;
+            }
 
-    private static void buildGameBoardSpace(List<GameBoardSpace> gameBoardSpaces, List<ActiveMatchCards> table0, List<ActiveMatchCards> table1,
-                                            List<ActiveMatchCards> table2, List<ActiveMatchCards> table3, List<ActiveMatchCards> table4,
-                                            List<ActiveMatchCards> table5, List<ActiveMatchCards> table6, List<ActiveMatchCards> table7) {
-        GameBoardSpace gameBoardSpace0 = new GameBoardSpace();
-        gameBoardSpace0.setCard(table0.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace0);
+            private static void buildGameBoardSpace
+            (List < GameBoardSpace > gameBoardSpaces, List < ActiveMatchCards > table0, List < ActiveMatchCards > table1,
+                    List < ActiveMatchCards > table2, List < ActiveMatchCards > table3, List < ActiveMatchCards > table4,
+                    List < ActiveMatchCards > table5, List < ActiveMatchCards > table6, List < ActiveMatchCards > table7)
+            {
+                GameBoardSpace gameBoardSpace0 = new GameBoardSpace();
+                gameBoardSpace0.setCard(table0.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace0);
 
-        GameBoardSpace gameBoardSpace1 = new GameBoardSpace();
-        gameBoardSpace1.setCard(table1.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace1);
+                GameBoardSpace gameBoardSpace1 = new GameBoardSpace();
+                gameBoardSpace1.setCard(table1.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace1);
 
-        GameBoardSpace gameBoardSpace2 = new GameBoardSpace();
-        gameBoardSpace2.setCard(table2.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace2);
+                GameBoardSpace gameBoardSpace2 = new GameBoardSpace();
+                gameBoardSpace2.setCard(table2.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace2);
 
-        GameBoardSpace gameBoardSpace3 = new GameBoardSpace();
-        gameBoardSpace3.setCard(table3.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace3);
+                GameBoardSpace gameBoardSpace3 = new GameBoardSpace();
+                gameBoardSpace3.setCard(table3.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace3);
 
-        GameBoardSpace gameBoardSpace4 = new GameBoardSpace();
-        gameBoardSpace4.setCard(table4.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace4);
+                GameBoardSpace gameBoardSpace4 = new GameBoardSpace();
+                gameBoardSpace4.setCard(table4.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace4);
 
-        GameBoardSpace gameBoardSpace5 = new GameBoardSpace();
-        gameBoardSpace5.setCard(table5.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace5);
+                GameBoardSpace gameBoardSpace5 = new GameBoardSpace();
+                gameBoardSpace5.setCard(table5.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace5);
 
-        GameBoardSpace gameBoardSpace6 = new GameBoardSpace();
-        gameBoardSpace6.setCard(table6.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace6);
+                GameBoardSpace gameBoardSpace6 = new GameBoardSpace();
+                gameBoardSpace6.setCard(table6.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace6);
 
-        GameBoardSpace gameBoardSpace7 = new GameBoardSpace();
-        gameBoardSpace7.setCard(table7.get(0).getCard());
-        gameBoardSpaces.add(gameBoardSpace7);
-    }
+                GameBoardSpace gameBoardSpace7 = new GameBoardSpace();
+                gameBoardSpace7.setCard(table7.get(0).getCard());
+                gameBoardSpaces.add(gameBoardSpace7);
+            }
 
-    /**
-     * restartGame should pick up the cards from the table, place them in the player's hand and redeal
-     * the table appropriately
-     */
-    public static void restartGame()
-    {
-        for (ActiveMatchCards zero : table0) {
-            Card p1a = zero.getCard();
-            playerOne.add(p1a);
+            /**
+             * restartGame should pick up the cards from the table, place them in the player's hand and redeal
+             * the table appropriately
+             */
+            public static void restartGame ()
+            {
+                for (ActiveMatchCards zero : table0) {
+                    Card p1a = zero.getCard();
+                    playerOne.add(p1a);
+                }
+                for (ActiveMatchCards one : table1) {
+                    Card p1b = one.getCard();
+                    playerOne.add(p1b);
+                }
+                for (ActiveMatchCards two : table2) {
+                    Card p1c = two.getCard();
+                    playerOne.add(p1c);
+                }
+                for (ActiveMatchCards three : table3) {
+                    Card p1d = three.getCard();
+                    playerOne.add(p1d);
+                }
+
+
+                // pick up for player 2
+                for (ActiveMatchCards four : table4) {
+                    Card p2a = four.getCard();
+                    playerTwo.add(p2a);
+                }
+                for (ActiveMatchCards five : table5) {
+                    Card p2b = five.getCard();
+                    playerTwo.add(p2b);
+                }
+                for (ActiveMatchCards six : table6) {
+                    Card p2c = six.getCard();
+                    playerTwo.add(p2c);
+                }
+                for (ActiveMatchCards seven : table7) {
+                    Card p2d = seven.getCard();
+                    playerTwo.add(p2d);
+                }
+
+                table0.clear();
+                table1.clear();
+                table2.clear();
+                table3.clear();
+                table4.clear();
+                table5.clear();
+                table6.clear();
+                table7.clear();
+
+                ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
+                ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
+                ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
+                ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(3), false);
+                ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.remove(0), false);
+                ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(1), false);
+                ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(2), false);
+                ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(3), false);
+
+
+                table0.add(c0);
+                table1.add(c1);
+                table2.add(c2);
+                table3.add(c3);
+                table4.add(c4);
+                table5.add(c5);
+                table6.add(c6);
+                table7.add(c7);
+
+
+            }
+
+
+            public static GameServerResponse getCurrentState () {
+                GameServerResponse gameServerResponse = new GameServerResponse();
+                List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
+                buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
+                gameServerResponse.setGameBoard(gameBoardSpaces);
+                return gameServerResponse;
+            }
         }
-        for (ActiveMatchCards one : table1) {
-            Card p1b = one.getCard();
-            playerOne.add(p1b);
-        }
-        for (ActiveMatchCards two : table2) {
-            Card p1c = two.getCard();
-            playerOne.add(p1c);
-        }
-        for (ActiveMatchCards three : table3) {
-            Card p1d = three.getCard();
-            playerOne.add(p1d);
-        }
-
-
-        // pick up for player 2
-        for (ActiveMatchCards four : table4) {
-            Card p2a = four.getCard();
-            playerTwo.add(p2a);
-        }
-        for (ActiveMatchCards five : table5) {
-            Card p2b = five.getCard();
-            playerTwo.add(p2b);
-        }
-        for (ActiveMatchCards six : table6) {
-            Card p2c = six.getCard();
-            playerTwo.add(p2c);
-        }
-        for (ActiveMatchCards seven : table7) {
-            Card p2d = seven.getCard();
-            playerTwo.add(p2d);
-        }
-
-        table0.clear();
-        table1.clear();
-        table2.clear();
-        table3.clear();
-        table4.clear();
-        table5.clear();
-        table6.clear();
-        table7.clear();
-
-        ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
-        ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
-        ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
-        ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(3), false);
-        ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.remove(0), false);
-        ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(1), false);
-        ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(2),false);
-        ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(3), false);
-
-
-
-
-        table0.add(c0);
-        table1.add(c1);
-        table2.add(c2);
-        table3.add(c3);
-        table4.add(c4);
-        table5.add(c5);
-        table6.add(c6);
-        table7.add(c7);
-
-
-
-    }
-
-
-
-    public static GameServerResponse getCurrentState() {
-        GameServerResponse gameServerResponse = new GameServerResponse();
-        List<GameBoardSpace> gameBoardSpaces = new ArrayList<>();
-        buildGameBoardSpace(gameBoardSpaces, table0, table1, table2, table3, table4, table5, table6, table7);
-        gameServerResponse.setGameBoard(gameBoardSpaces);
-        return gameServerResponse;
-    }
-}
