@@ -61,9 +61,9 @@ public class GameLogic {
      * discarding and to check matching
      */
     public static void dealGame() {
+        deck.clear();
         deck = createDeck();
         Collections.shuffle(deck);
-        int playable = 5;
 
         // creates 8 playing cards and adds them to a test array to check for matches
         card0 = deck.get(0);
@@ -308,71 +308,65 @@ public class GameLogic {
     }
 
     /**
-     * This method picks up the 4 piles in front of each player
-     * and add them to their hand. This allows the game to continue
-     * when there are no matching cards on the table
+     * restartGame should pick up the cards from the table, place them in the player's hand and redeal
+     * the table appropriately
      */
-    public static void pickUpDiscarded() {
-        // pick up for player one
+    public static void restartGame()
+    {
+        ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
+        ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
+        ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
+        ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(3), false);
+        ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.remove(0), false);
+        ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(1), false);
+        ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(2),false);
+        ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(3), false);
+
         for (ActiveMatchCards zero : table0) {
-            Card c0 = zero.getCard();
-            for (ActiveMatchCards one : table1) {
-                Card c1 = one.getCard();
-                for (ActiveMatchCards two : table2) {
-                    Card c2 = two.getCard();
-                    for (ActiveMatchCards three : table3) {
-                        Card c3 = three.getCard();
-                        playerOne.add(c0);
-                        playerOne.add(c1);
-                        playerOne.add(c2);
-                        playerOne.add(c3);
-                    }
-                }
-            }
+            Card p1a = zero.getCard();
+            playerOne.add(p1a);
         }
+            for (ActiveMatchCards one : table1) {
+                Card p1b = one.getCard();
+                playerOne.add(p1b);
+            }
+                for (ActiveMatchCards two : table2) {
+                    Card p1c = two.getCard();
+                    playerOne.add(p1c);
+                }
+                    for (ActiveMatchCards three : table3) {
+                        Card p1d = three.getCard();
+                        playerOne.add(p1d);
+                    }
+           
 
         // pick up for player 2
         for (ActiveMatchCards four : table4) {
-            Card c4 = four.getCard();
-            for (ActiveMatchCards five : table5) {
-                Card c5 = five.getCard();
-                for (ActiveMatchCards six : table6) {
-                    Card c6 = six.getCard();
-                    for (ActiveMatchCards seven : table7) {
-                        Card c7 = seven.getCard();
-                        playerTwo.add(c4);
-                        playerTwo.add(c5);
-                        playerTwo.add(c6);
-                        playerTwo.add(c7);
-                    }
-                }
-            }
+            Card p2a = four.getCard();
+            playerTwo.add(p2a);
         }
+            for (ActiveMatchCards five : table5) {
+                Card p2b = five.getCard();
+                playerTwo.add(p2b);
+            }
+                for (ActiveMatchCards six : table6) {
+                    Card p2c = six.getCard();
+                    playerTwo.add(p2c);
+                }
+                    for (ActiveMatchCards seven : table7) {
+                        Card p2d = seven.getCard();
+                        playerTwo.add(p2d);
+                    }
 
-        table0.removeAll(table0);
-        table1.removeAll(table1);
-        table2.removeAll(table2);
-        table3.removeAll(table3);
-        table4.removeAll(table4);
-        table5.removeAll(table5);
-        table6.removeAll(table6);
-        table7.removeAll(table7);
-    }
+        table0.clear();
+        table1.clear();
+        table2.clear();
+        table3.clear();
+        table4.clear();
+        table5.clear();
+        table6.clear();
+        table7.clear();
 
-    /**
-     * redealExisting redeals the game from each player's hand if there
-     * are no longer any matching cards on the table for them to play on
-     */
-    public static void redealExisting()
-    {
-        ActiveMatchCards c0 = new ActiveMatchCards(playerOne.get(0), false);
-        ActiveMatchCards c1 = new ActiveMatchCards(playerOne.get(1), false);
-        ActiveMatchCards c2 = new ActiveMatchCards(playerOne.get(2), false);
-        ActiveMatchCards c3 = new ActiveMatchCards(playerOne.get(3), false);
-        ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.get(0), false);
-        ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.get(1), false);
-        ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.get(2),false);
-        ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.get(3), false);
 
         table0.add(c0);
         table1.add(c1);
@@ -383,30 +377,11 @@ public class GameLogic {
         table6.add(c6);
         table7.add(c7);
 
-        playerOne.remove(0);
-        playerOne.remove(1);
-        playerOne.remove(2);
-        playerOne.remove(3);
-        playerTwo.remove(0);
-        playerTwo.remove(1);
-        playerTwo.remove(2);
-        playerTwo.remove(3);
+
 
     }
 
 
-    /**
-     * restartGame is called when there are no matches available on the table to
-     * play each player picks up the 4 stack of cards in front of them, then each
-     * player deals a new 4 cards each for the table
-     */
-
-    public static void restartGame()
-    {
-        pickUpDiscarded();
-        redealExisting();
-
-    }
 
     public static GameServerResponse getCurrentState() {
         GameServerResponse gameServerResponse = new GameServerResponse();

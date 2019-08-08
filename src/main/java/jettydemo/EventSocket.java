@@ -40,6 +40,7 @@ public class EventSocket extends WebSocketAdapter
         GameLogic.dealGame();
         while (!GameLogic.checkMove()) {
             System.out.println("game dead, redealing");
+            GameLogic.restartGame();
         }
         ObjectMapper objectMapper = new ObjectMapper();
         GameServerResponse gameServerResponse = GameLogic.getCurrentState();
