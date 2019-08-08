@@ -311,7 +311,7 @@ public class GameLogic {
      * redealExisting redeals the game from each player's hand if there
      * are no longer any matching cards on the table for them to play on
      */
-    public static void redealExisting()
+    public static void restartGame()
     {
         ActiveMatchCards c0 = new ActiveMatchCards(playerOne.get(0), false);
         ActiveMatchCards c1 = new ActiveMatchCards(playerOne.get(1), false);
@@ -388,17 +388,6 @@ public class GameLogic {
     }
 
 
-    /**
-     * restartGame is called when there are no matches available on the table to
-     * play each player picks up the 4 stack of cards in front of them, then each
-     * player deals a new 4 cards each for the table
-     */
-
-    public static void restartGame()
-    {
-        redealExisting();
-
-    }
 
     public static GameServerResponse getCurrentState() {
         GameServerResponse gameServerResponse = new GameServerResponse();
