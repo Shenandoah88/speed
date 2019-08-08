@@ -65,25 +65,16 @@ document.addEventListener("touchend", function(event) {
 // prevent default action (open as link for some elements)
     event.preventDefault();
 // move dragged elem to the selected drop target
-    if (patt.test(event.target.className)) {
+    var changedTouch = event.changedTouches[0];
+    var elem = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
 
-        if(parseInt(dragged.id)< 4 ){
-            var playerAction = {};
-            playerAction.player = "player1";
-            playerAction.stack = event.target.id;
-            var playerActionJSON = JSON.stringify(playerAction);
-            webSocket.send(playerActionJSON);
-        }
-        else  if(parseInt(dragged.id)< 8 ){
-            var playerAction = {};
-            playerAction.player = "player2";
-            playerAction.stack = event.target.id;
-            var playerActionJSON = JSON.stringify(playerAction);
-            webSocket.send(playerActionJSON);
-        }
-        else{
-            console.log('Failed to drag');
-        }
+    if (dragged.className.indexOf("player") > -1 && parseInt(elem.id) > -1 && parseInt(elem.id) < 8) {
+
+        var playerAction = {};
+        playerAction.player = dragged.className;
+        playerAction.stack = elem.id;
+        var playerActionJSON = JSON.stringify(playerAction);
+        webSocket.send(playerActionJSON);
     }
 }, false);
 
