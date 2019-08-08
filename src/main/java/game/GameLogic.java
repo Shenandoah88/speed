@@ -313,50 +313,41 @@ public class GameLogic {
      */
     public static void restartGame()
     {
-        ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
-        ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
-        ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
-        ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(3), false);
-        ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.remove(0), false);
-        ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(1), false);
-        ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(2),false);
-        ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(3), false);
-
         for (ActiveMatchCards zero : table0) {
             Card p1a = zero.getCard();
             playerOne.add(p1a);
         }
-            for (ActiveMatchCards one : table1) {
-                Card p1b = one.getCard();
-                playerOne.add(p1b);
-            }
-                for (ActiveMatchCards two : table2) {
-                    Card p1c = two.getCard();
-                    playerOne.add(p1c);
-                }
-                    for (ActiveMatchCards three : table3) {
-                        Card p1d = three.getCard();
-                        playerOne.add(p1d);
-                    }
-           
+        for (ActiveMatchCards one : table1) {
+            Card p1b = one.getCard();
+            playerOne.add(p1b);
+        }
+        for (ActiveMatchCards two : table2) {
+            Card p1c = two.getCard();
+            playerOne.add(p1c);
+        }
+        for (ActiveMatchCards three : table3) {
+            Card p1d = three.getCard();
+            playerOne.add(p1d);
+        }
+
 
         // pick up for player 2
         for (ActiveMatchCards four : table4) {
             Card p2a = four.getCard();
             playerTwo.add(p2a);
         }
-            for (ActiveMatchCards five : table5) {
-                Card p2b = five.getCard();
-                playerTwo.add(p2b);
-            }
-                for (ActiveMatchCards six : table6) {
-                    Card p2c = six.getCard();
-                    playerTwo.add(p2c);
-                }
-                    for (ActiveMatchCards seven : table7) {
-                        Card p2d = seven.getCard();
-                        playerTwo.add(p2d);
-                    }
+        for (ActiveMatchCards five : table5) {
+            Card p2b = five.getCard();
+            playerTwo.add(p2b);
+        }
+        for (ActiveMatchCards six : table6) {
+            Card p2c = six.getCard();
+            playerTwo.add(p2c);
+        }
+        for (ActiveMatchCards seven : table7) {
+            Card p2d = seven.getCard();
+            playerTwo.add(p2d);
+        }
 
         table0.clear();
         table1.clear();
@@ -366,6 +357,17 @@ public class GameLogic {
         table5.clear();
         table6.clear();
         table7.clear();
+        
+        ActiveMatchCards c0 = new ActiveMatchCards(playerOne.remove(0), false);
+        ActiveMatchCards c1 = new ActiveMatchCards(playerOne.remove(1), false);
+        ActiveMatchCards c2 = new ActiveMatchCards(playerOne.remove(2), false);
+        ActiveMatchCards c3 = new ActiveMatchCards(playerOne.remove(3), false);
+        ActiveMatchCards c4 = new ActiveMatchCards(playerTwo.remove(0), false);
+        ActiveMatchCards c5 = new ActiveMatchCards(playerTwo.remove(1), false);
+        ActiveMatchCards c6 = new ActiveMatchCards(playerTwo.remove(2),false);
+        ActiveMatchCards c7 = new ActiveMatchCards(playerTwo.remove(3), false);
+
+
 
 
         table0.add(c0);
